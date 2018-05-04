@@ -1,6 +1,13 @@
 <?php
 require_once '_inc_header.php';
 require_once '../classes/Users.php';
+
+/**
+ * Page autorisée aux administrateurs
+ */
+if( $_SESSION['user']['user_group'] === 'manager') {
+    header("Location: ".$library->getServerHost()."admin/");
+}
 $fieldsStatus = true;
 if(!empty($_POST)){
     $errors = array();
