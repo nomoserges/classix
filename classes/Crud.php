@@ -20,7 +20,7 @@ class Crud {
 
   private $_host = "localhost";
   private $_username = "advertize";
-  private $_password = "veinght1";
+  private $_password = "*c218*";
   private $_database = "advertize";
   /* Connection Handle */
   protected $connection;
