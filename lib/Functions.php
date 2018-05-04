@@ -55,6 +55,10 @@ class Functions {
         //echo '<script type="application/javascript">window.location.reload(true);</script>';
     }
 
+    public function openUrl($url){
+        echo '<script type="application/javascript">window.open("'.$url.'", "_self");</script>';
+    }
+
     public function alert($message){
         echo '<script type="application/javascript">window.alert("'.$message.'");</script>';
     }

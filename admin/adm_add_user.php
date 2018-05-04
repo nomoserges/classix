@@ -6,7 +6,8 @@ require_once '../classes/Users.php';
  * Page autorisée aux administrateurs
  */
 if( $_SESSION['user']['user_group'] === 'manager') {
-    header("Location: ".$library->getServerHost()."admin/");
+    //header("Location: ".$library->getServerHost()."admin/");
+    $library->openUrl($library->getServerHost()."admin/");
 }
 $fieldsStatus = true;
 if(!empty($_POST)){
