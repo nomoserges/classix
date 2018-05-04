@@ -20,7 +20,7 @@ class Crud {
 
   private $_host = "localhost";
   private $_username = "advertize";
-  private $_password = "veinght1";
+  private $_password = "*c218*";
   private $_database = "advertize";
   /* Connection Handle */
   protected $connection;
@@ -43,10 +43,10 @@ class Crud {
    * @param $value : commade sql.
    * @return $texte : returne le texte.
    */
-    private function escape_string($value) {
-        //return $this->connection->real_escape_string($value);
+    /*private function escape_string($value) {
+        return $this->connection->real_escape_string($value);
         return $value;
-    }
+    }*/
   /** Recuperation des données
    * @param $query: requete a executer
    */
