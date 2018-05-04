@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="@Classix-Database" uuid="25a0f279-a2a6-4d1f-a240-97d0a4bc8656">
+      <database-info product="MySQL" version="10.1.29-MariaDB-6" jdbc-version="4.2" driver-name="MariaDB connector/J" driver-version="2.2.1">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>advertize</user-name>
+      <introspection-schemas>*:advertize</introspection-schemas>
+    </data-source>
+  </component>
+</project>
