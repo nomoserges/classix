@@ -91,4 +91,12 @@ class Crud {
     } else { return true; }
   }
 
+    /** Gestion des slashes et caractères spéciaux dans les formulaires
+     * @param $input
+     * @return string
+     */
+  public function secureField($input){
+      return addslashes(htmlentities($input));
+  }
+
 }

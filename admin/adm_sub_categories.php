@@ -66,7 +66,7 @@ if( isset($_GET['category_id']) && !empty($_GET['category_id'])){
                     <form  role="form" class="login-form" method="post"
                            action="<?php echo $_SERVER['PHP_SELF']; ?>?parentcid=<?php echo $parentID; ?>">
                         <div class="form-group col-lg-6 col-sm-12">
-                            <input type="text" class="form-control"
+                            <input type="text" class="form-control" autofocus
                                    value="<?php $library->inputData($_POST['categoryName']); ?>"
                                    name="categoryName" placeholder="Nouvelle sous catégorie">
                         </div>
@@ -95,7 +95,7 @@ if( isset($_GET['category_id']) && !empty($_GET['category_id'])){
                             <div class="panel panel-default">
                                 <div class="panel-body center">
                                     <h5>
-                                        <?php echo html_entity_decode($subCategories[$i]["category_name"]); ?>
+                                        <?php echo $library->outputField($subCategories[$i]["category_name"]); ?>
                                     </h5>
                                 </div>
                                 <div class="panel-footer center">

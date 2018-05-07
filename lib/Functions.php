@@ -23,6 +23,16 @@ class Functions {
         }
     }
 
+    /** Sortie du contenu des formulaires après htmlentities
+     * @param $fieldDatas
+     * @return string
+     */
+    public function outputField($fieldDatas){
+        return html_entity_decode($fieldDatas);
+    }
+    /** Affichage des erreurs des formulaires
+     * @param $variable
+     */
     public function debug_errors($variable){
         if( sizeof($variable) > 0 ){
             echo '<blockquote class="red-text darken-1">';

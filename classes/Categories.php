@@ -67,7 +67,8 @@ class Categories extends Crud {
      */
     public function insert(){
         $sqlQuery = "INSERT INTO ".TBL_Categories
-            ." VALUES(null, '".$this->getParentCid()."', '".htmlentities($this->getCategoryName())."')";
+            ." VALUES(null, '".$this->getParentCid()
+            ."', '".$this->secureField($this->getCategoryName())."')";
         $statement = $this->execute($sqlQuery);
         return $statement;
     }
