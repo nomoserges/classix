@@ -62,7 +62,7 @@ CREATE TABLE `categories` (
   `parent_cid` int(11) NOT NULL DEFAULT '0',
   `category_name` varchar(150) NOT NULL,
   PRIMARY KEY (`cat_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -71,7 +71,7 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (1,0,'T&amp;Eacute;L&amp;Eacute;PHONES &amp;amp; TABLETTES'),(2,0,'INFORMATIQUE'),(3,0,'TV &amp;amp; MULTIMEDIAS'),(4,0,'IMMOBILIER'),(5,0,'RENCONTRES'),(6,0,'LOISIRS'),(7,0,'AUTOMOBILES'),(8,1,'Smartphones'),(10,1,'Smartphones IOS'),(11,0,'MOTORS &amp; BIKES'),(12,1,'Tablettes Samsung'),(13,2,'Ordinateurs de bureau'),(14,2,'Ordinateurs portables'),(15,2,'Ecrans'),(16,2,'Unit&amp;eacute;s centrales'),(17,2,'Accessoires');
+INSERT INTO `categories` VALUES (1,0,'IMMOBILIER'),(2,1,'VENTE IMMOBILIERE'),(3,1,'Location immobili&amp;egrave;re'),(4,1,'Colocations'),(5,1,'Locations vacances'),(6,1,'Bureaux - Commerces'),(7,0,'EMPLOIS &amp;amp; FORMATIONS'),(9,0,'AUTO, MOTO, BATEAU'),(10,0,'ANIMAUX'),(11,0,'ELECTROMENAGER'),(12,0,'MAISON, DECO, JARDIN'),(13,0,'MODE, BEAUT&amp;Eacute;'),(14,0,'HIGH-TECH, INFORMATIQUE'),(15,0,'LOISIRS, CULTURES, SPORT'),(16,0,'SERVICES'),(17,0,'RENCONTRES'),(18,9,'Voitures'),(19,9,'Utilitaires'),(20,9,'Accessoires auto, moto'),(21,9,'Moto, Scooter'),(22,9,'Caravaning, Remorque'),(23,9,'B&amp;acirc;teaux, nautisme'),(24,9,'Autres v&amp;eacute;hicules'),(25,7,'Offres de formation'),(26,7,'Interim'),(27,7,'Offres d\'emploi'),(28,10,'Chiens'),(29,10,'Chats'),(30,10,'Accessoires (Cages, niches, etc...)'),(31,10,'Poissons, aquarium'),(32,11,'Lavage'),(33,11,'Cuisine'),(34,11,'Nettoyage, repassage'),(35,11,'Appareil et accessoires'),(36,12,'Meubles'),(37,12,'D&amp;eacute;corations, luminaires'),(38,12,'Jardin, bricolage'),(39,12,'Lit, literie'),(40,12,'Vaisselle, art de la table'),(41,12,'Materiel professionnel'),(42,12,'Climatisation, chauffage'),(43,12,'Linge de maison'),(44,13,'V&amp;ecirc;tements Femme'),(45,13,'V&amp;ecirc;tements Homme'),(46,13,'Chaussures'),(48,13,'Bijoux, Montres'),(49,13,'Beaut&amp;eacute;, soins'),(50,13,'Sac &amp;agrave; main, valise'),(51,13,'V&amp;ecirc;tements Enfant'),(52,13,'Lunettes de soleil'),(53,13,'Lingerie'),(54,14,'Ordinateur, informatique'),(55,14,'T&amp;eacute;l&amp;eacute;phones'),(56,14,'Son, Hifi'),(57,14,'Console, jeux vid&amp;eacute;os'),(58,14,'Autres High-tech'),(59,14,'Vid&amp;eacute;o, camescope'),(60,14,'Gps'),(61,15,'Livre, BD, Magazine'),(62,15,'Autres loisirs, culture'),(63,15,'Collection'),(64,15,'Equipement de sport'),(65,15,'CD, Vinyle, musique'),(66,15,'Jeux, jouets'),(67,15,'V&amp;eacute;lo'),(68,15,'Instrument de musique'),(69,15,'Billets spectacles, loisirs'),(70,15,'DVD, Blu-Ray'),(71,15,'Vin, alimentation'),(72,15,'Billets de train, avion'),(73,16,'Service &amp;agrave; la personne'),(74,16,'Autres services'),(75,16,'Artisans, d&amp;eacute;panneurs'),(77,16,'Horoscope, voyance'),(78,16,'Vie locale'),(79,16,'Organisation d\'&amp;eacute;v&amp;egrave;nements'),(80,17,'Rencontre s&amp;eacute;rieuse'),(81,17,'Rencontre amicale');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -233,7 +233,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('atsama','atsama.daryl@gmail.com','c984aed014aec7623a54f0591da07a85fd4b762d','Atsama','Daryl','douala bassa','661000998','customer',1,0),('duvent','claudeduvent@locahost.com','7c4a8d09ca3762af61e59520943dc26494f8941b','Duvent','Claude','','','manager',1,0),('dubois','dubois@site.com','7c4a8d09ca3762af61e59520943dc26494f8941b','','','','','customer',1,0),('machoudi','machoudi@localhost.com','7c4a8d09ca3762af61e59520943dc26494f8941b','GBADAMASSI','MACHOUDI','','','admin',1,0),('martine','martine.mireille@gmail.com','7c4a8d09ca3762af61e59520943dc26494f8941b','Ngono','Martine','douala bassa','661000998','manager',1,0),('seannomo','nomoserges@gmail.com','81d29e3dd118edbedbf941e4118889658c8832a8','Mvilongo','Serge','YaoundÃ©, cameroun','694088948','admin',1,0);
+INSERT INTO `users` VALUES ('atsama','atsama.daryl@gmail.com','c984aed014aec7623a54f0591da07a85fd4b762d','Atsama','Daryl','douala bassa','661000998','customer',1,0),('duvent','claudeduvent@locahost.com','7c4a8d09ca3762af61e59520943dc26494f8941b','Duvent','Claude','','','manager',0,0),('dubois','dubois@site.com','7c4a8d09ca3762af61e59520943dc26494f8941b','','','','','customer',1,0),('machoudi','machoudi@localhost.com','7c4a8d09ca3762af61e59520943dc26494f8941b','GBADAMASSI','MACHOUDI','','','admin',1,0),('martine','martine.mireille@gmail.com','7c4a8d09ca3762af61e59520943dc26494f8941b','Ngono','Martine','douala bassa','661000998','manager',1,0),('seannomo','nomoserges@gmail.com','81d29e3dd118edbedbf941e4118889658c8832a8','Mvilongo','Serge Anselme','Yaound&eacute;, cameroun','694088948','admin',1,0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -246,4 +246,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-05  1:10:54
+-- Dump completed on 2018-05-07 18:13:56
