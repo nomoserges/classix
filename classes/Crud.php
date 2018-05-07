@@ -69,7 +69,7 @@ class Crud {
   }
     /** Retourner le nombre de lignes d'une requete de type select
      * @param $query: requete sql de type SELECT
-     * @return num_rows: nombre de lignes renvoyées
+     * @return : nombre de lignes renvoyées
      */
     public function getRows($query){
         $result = $this->connection->query($query);
@@ -91,16 +91,4 @@ class Crud {
     } else { return true; }
   }
 
-  /** Suppression des données dans une table.
-   * @param $id : identifiant de la table.
-   * @param $table : table de la requete.
-   * @return boolean : etat de l'execution.
-   */
-  public function delete($id, $table) {
-    $query = "DELETE FROM $table WHERE id = $id";
-    $result = $this->connection->query($query);
-    if ($result == false) {
-        return $this->connection->error;
-    } else { return true; }
-  }
 }

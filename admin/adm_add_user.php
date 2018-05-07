@@ -1,7 +1,7 @@
 <?php
 require_once '_inc_header.php';
 require_once '../classes/Users.php';
-
+$newUser = new Users();
 /**
  * Page autorisée aux administrateurs
  */
@@ -27,7 +27,6 @@ if(!empty($_POST)){
         $fieldsStatus =false;
     }
     /*  Vérification si le pseudo existe déjà */
-    $newUser = new Users();
     $newUser->setPseudo($_POST['pseudo']);
     $newUser->setUserMail($_POST['user_mail']);
     if( $newUser->_credentialsAlready() === true){

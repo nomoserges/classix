@@ -30,7 +30,10 @@ if( !empty($_POST) ){
         $resultStmt = $connectUser->doLogin();
         //var_dump($resultStmt);
         if ($resultStmt === 0) {
-            $errors['Formulaire'] = "Email ou mot de passe introuvable";
+            $library->alert("Email ou mot de passe introuvable");
+            $_POST = array();
+            unset($_POST);
+            $library->doReloadPage();
         } else {
             $resultStmt[0];
             $connectUser->setPseudo($resultStmt[0]['pseudo']);

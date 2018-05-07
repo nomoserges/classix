@@ -62,7 +62,7 @@ require_once "../_inc/_inc_header.php";
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="account_home.php">Mon profil</a></li>
+                            <li><a href="../account_home.php">Mon profil</a></li>
                             <li><a href="../">Site web</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="../signout.php">Déconnexion</a></li>

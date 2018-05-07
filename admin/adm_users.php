@@ -1,13 +1,14 @@
 <?php
     require_once '_inc_header.php';
     require_once '../classes/Users.php';
+    $users = new Users();
+
     $groupUserNames = array(
             "admin"=>"Administrateur",
             "manager"=>"Gestionnaires",
             "customer"=>"Clients"
     );
     if(isset($_GET['group']) && !empty($_GET['group'])){
-        $users = new Users();
         $users->setUserGroup($_GET['group']);
         $usersList = $users->getUsersPerGroup();
     }
@@ -18,6 +19,44 @@
     if ($_GET['group']==='manager' || $_GET['group']==='admin') {
         if ("admin" === $_SESSION['user']['user_group']){
             $btnAction = true;
+        }
+    }
+    /** Gestion des actions supprimer, activer et desactiver
+     *  d'un compte.
+     */
+    if( isset($_GET['action']) && !empty($_GET['action']) ) {
+        if( isset($_GET['userid']) && !empty($_GET['userid']) ) {
+            $users->setPseudo($_GET['userid']);
+            switch ($_GET['action']){
+                case 'enable':
+                    $users->setPseudo($_GET['userid']);
+                    $users->setIsEnabled(1);
+                    $resultStmt = $users->updateStatus();
+                    if( $resultStmt === true ){
+                        $library->alert("Compte Utilisateur activé");
+                        $library->goBack();
+                    }
+                    break;
+
+                case 'disable':
+                    $users->setPseudo($_GET['userid']);
+                    $users->setIsEnabled(0);
+                    $resultStmt = $users->updateStatus();
+                    if( $resultStmt === true ){
+                        $library->alert("Compte Utilisateur désactivé");
+                        $library->goBack();
+                    }
+                    break;
+
+                case 'delete':
+                    $users->setPseudo($_GET['userid']);
+                    $resultStmt = $users->deleteAccount();
+                    if( $resultStmt === true ){
+                        $library->alert("Compte Utilisateur supprimé");
+                        $library->goBack();
+                    }
+                    break;
+            }
         }
     }
 ?>
@@ -72,12 +111,25 @@
                             ?>
                         </td>
                         <?php if( true === $btnAction ): ?>
+                            <?php if($_SESSION['user']['pseudo']===$usersList[$i]['pseudo']): ?>
+                        <td class="center">
+                            <a href="../account_home.php" class="btn btn-xs btn-primary">Mon profile</a>
+                        </td>
+                            <?php else: ?>
                         <td class="center">
                             <div class="btn-group btn-xs" role="group">
-                                <a href="" class="btn btn-xs btn-warning">désact.</a>
-                                <a href="" class="btn btn-xs btn-danger">Supp.</a>
+                                <?php if (1 == $usersList[$i]['is_enabled']): ?>
+                                <a href="<?php echo $_SERVER['PHP_SELF']; ?>?action=disable&userid=<?php echo $usersList[$i]['pseudo']; ?>"
+                                class="btn btn-xs btn-warning">Désact.</a>
+                                <?php else: ?>
+                                <a href="<?php echo $_SERVER['PHP_SELF']; ?>?action=enable&userid=<?php echo $usersList[$i]['pseudo']; ?>"
+                                   class="btn btn-xs btn-primary">Activer</a>
+                                <?php endif; ?>
+                                <a href="<?php echo $_SERVER['PHP_SELF']; ?>?action=delete&userid=<?php echo $usersList[$i]['pseudo']; ?>"
+                               class="btn btn-xs btn-danger">Supp.</a>
                             </div>
                         </td>
+                            <?php endif; ?>
                         <?php endif; ?>
                     </tr>
                 <?php endfor; ?>

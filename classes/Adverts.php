@@ -1,7 +1,7 @@
 <?php
+require_once 'Crud.php';
 
-
-class Adverts {
+class Adverts extends Crud {
     public $idadvert;
     public $useremail;
     public $cat_id;

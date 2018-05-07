@@ -1,7 +1,13 @@
 <?php
 require_once 'lib/Functions.php';
+if(!isset($_SESSION['user'])||empty($_SESSION['user']['pseudo'])){
+    $library->openUrl($library->getServerHost());
+}
 $pageTitle = "Annonces désactivées";
 include "_inc/_inc_header.php";
+if(!isset($_SESSION['user'])||empty($_SESSION['user']['pseudo'])){
+    $library->openUrl($library->getServerHost());
+}
 ?>
 <body>
 <?php include '_inc/_inc_navbar.php'; ?>
@@ -11,7 +17,7 @@ include "_inc/_inc_header.php";
       <?php include '_inc/_inc_account_menu.php'; ?>
       <div class="col-sm-9 page-content">
         <div class="inner-box">
-        <h2 class="title-2"></i> Désactivées</h2>
+        <h2 class="title-2"> Désactivées</h2>
         <div class="table-responsive">
           <table class="table table-striped table-bordered add-manage-table">
           <thead>
@@ -31,7 +37,7 @@ include "_inc/_inc_header.php";
                 </a>
               </td>
               <td class="ads-details-td">
-                <h4><a href="ads_details.php">Brand New All about iPhones</a></h4>
+                <h4><a href="#">Brand New All about iPhones</a></h4>
                 <p> <strong> Publié le </strong>:02-Oct-2017, 04:38 PM </p>
                 <p> <strong>Visiteurs </strong>: 221 <strong>Localisé à:</strong> New York </p>
               </td>
@@ -52,7 +58,5 @@ include "_inc/_inc_header.php";
       </div>
     </div>
   </div>
-</div>
-
 
 <?php include '_inc/_inc_footer.php'; ?>

@@ -1,4 +1,4 @@
-<div class="col-sm-3 page-sideabr">
+<div class="col-sm-12 col-lg-3 page-sideabr">
   <aside>
     <div class="inner-box">
       <div class="user-panel-sidebar">
@@ -9,6 +9,9 @@
               <li>
                 <a href="account_home.php">Accueil</a>
               </li>
+                <li>
+                    <a href="account_security.php">Sécurité</a>
+                </li>
               <li>
                 <a href="posts_ads.php">Publier</a>
               </li>

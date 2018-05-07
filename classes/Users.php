@@ -251,5 +251,51 @@ class Users extends Crud {
         return $statement;
     }
 
+    /** Activer/Desactiver un compte
+     * @return bool
+     */
+    public function updateStatus(){
+        $sqlQuery = "UPDATE ".TBL_Users
+            ." SET is_enabled = ".$this->getisEnabled()
+            ." WHERE pseudo = '".$this->getPseudo()."'"
+            ." OR user_mail = '".$this->getUserMail()."'";
+        $statement = $this->execute($sqlQuery);
+        return $statement;
+    }
 
+    /** Activer/Desactiver un compte
+     * @return bool
+     */
+    public function deleteAccount(){
+        $sqlQuery = "UPDATE ".TBL_Users
+            ." SET is_deleted = 1, is_enabled=0"
+            ." WHERE pseudo = '".$this->getPseudo()."'"
+            ." OR user_mail = '".$this->getUserMail()."'";
+        $statement = $this->execute($sqlQuery);
+        return $statement;
+    }
+
+    /** Mise à jour du profile
+     * @return bool
+     */
+    public function updateDetails(){
+        $sqlQuery = "UPDATE ".TBL_Users
+            ." SET last_name = '".htmlentities($this->getLastName())."'"
+            ." ,first_name = '".htmlentities($this->getFirstName())."'"
+            ." ,address = '".htmlentities($this->getAddress())."'"
+            ." ,phones = '".$this->getPhones()."'"
+            ." WHERE pseudo = '".$this->getPseudo()."'"
+            ." OR user_mail = '".$this->getUserMail()."'";
+        $statement = $this->execute($sqlQuery);
+        return $statement;
+    }
+
+    public function changePassword(){
+        $sqlQuery = "UPDATE ".TBL_Users
+            ." SET user_password = '".sha1($this->getUserPassword())."'"
+            ." WHERE pseudo = '".$this->getPseudo()."'"
+            ." OR user_mail = '".$this->getUserMail()."'";
+        $statement = $this->execute($sqlQuery);
+        return $statement;
+    }
 }
