@@ -1,4 +1,4 @@
-<footer>
+<footer class="footer">
   <div id="copyright">
     <div class="container">
       <div class="row">
@@ -37,4 +37,5 @@
 <script type="text/javascript" src="<?php $library->baseurl(); ?>assets/jquery.themepunch.tools.min.js"></script>
 <script src="<?php $library->baseurl(); ?>assets/bootstrap-select.min.js"></script>
 
-</body></html>
+</body>
+</html>
