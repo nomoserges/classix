@@ -3,7 +3,7 @@
 require_once 'Crud.php';
 
 class Cities extends Crud {
-    public $country_code;
+    public $regionid;
     public $code_postal;
     public $city_name;
 
@@ -17,18 +17,19 @@ class Cities extends Crud {
     /**
      * @return mixed
      */
-    public function getCountryCode()
+    public function getRegionid()
     {
-        return $this->country_code;
+        return $this->regionid;
     }
 
     /**
-     * @param mixed $country_code
+     * @param mixed $regionid
      */
-    public function setCountryCode($country_code)
+    public function setRegionid($regionid)
     {
-        $this->country_code = $country_code;
+        $this->regionid = $regionid;
     }
+
 
     /**
      * @return mixed
@@ -63,16 +64,13 @@ class Cities extends Crud {
     }
 
     public function insert(){
-        $sqlQuery = "INSERT INTO ".TBL_Cities
-            ." VALUES('".$this->getCountryCode()."', '".$this->getCodePostal()."', '".$this->getCityName()."')";
-        $statement = $this->execute($sqlQuery);
-        return $statement;
+        return $this->execute("INSERT INTO ".TBL_Cities
+            ." VALUES('".$this->getRegionid()."', '".$this->getCodePostal()
+            ."', '".$this->getCityName()."')" );
     }
 
     public function getList() {
-        $query = "SELECT * FROM ".TBL_Cities;
-        $statement = $this->getData($query);
-        return $statement;
+        return $this->getData("SELECT * FROM ".TBL_Cities);
     }
 
     public function getCity(){
@@ -80,14 +78,12 @@ class Cities extends Crud {
             //." WHERE country_code = '".$this->getCountryCode()."'"
             ." WHERE code_postal = '".$this->getCodePostal()."'"
             ." OR city_name = '".$this->getCityName()."'";
-        $statement = $this->getData($query);
-        return $statement;
+        return $this->getData($query);
     }
 
-    public function getCountryCities(){
+    public function getRegionCities(){
         $query = "SELECT * FROM ".TBL_Cities
-            ." WHERE country_code = '".$this->getCountryCode()."'";
-        $statement = $this->getData($query);
-        return $statement;
+            ." WHERE regionid = '".$this->getRegionid()."'";
+        return $this->getData($query);
     }
 }

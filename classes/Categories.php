@@ -15,11 +15,11 @@ class Categories extends Crud {
     }
 
     /**
-     * @return mixed
+     * @returnmixed
      */
     public function getCatId()
     {
-        return $this->cat_id;
+        return$this->cat_id;
     }
 
     /**
@@ -31,11 +31,11 @@ class Categories extends Crud {
     }
 
     /**
-     * @return mixed
+     * @returnmixed
      */
     public function getParentCid()
     {
-        return $this->parent_cid;
+        return$this->parent_cid;
     }
 
     /**
@@ -47,11 +47,11 @@ class Categories extends Crud {
     }
 
     /**
-     * @return mixed
+     * @returnmixed
      */
     public function getCategoryName()
     {
-        return $this->category_name;
+        return$this->category_name;
     }
 
     /**
@@ -63,59 +63,53 @@ class Categories extends Crud {
     }
 
     /** Insérer une catégorie
-     * @return bool
+     * @returnbool
      */
     public function insert(){
         $sqlQuery = "INSERT INTO ".TBL_Categories
             ." VALUES(null, '".$this->getParentCid()
             ."', '".$this->secureField($this->getCategoryName())."')";
-        $statement = $this->execute($sqlQuery);
-        return $statement;
+        return $this->execute($sqlQuery);
     }
 
     public function delete(){
         $sqlQuery = "DELETE FROM ".TBL_Categories
         ." WHERE cat_id=".$this->getCatId();
-        $statement = $this->execute($sqlQuery);
-        return $statement;
+        return $this->execute($sqlQuery);
     }
 
     /** Liste de toutes les catégories.
-     * @return array|int|string
+     * @returnarray|int|string
      */
     public function getList(){
         $query = "SELECT * FROM ".TBL_Categories." WHERE parent_cid=".$this->getParentCid();
-        $statement = $this->getData($query);
-        return $statement;
+        return $this->getData($query);
     }
 
     /** Retourner une catégorie.
-     * @return array|int|string
+     * @returnarray|int|string
      */
     public function getCategory(){
         $query = "SELECT * FROM ".TBL_Categories
             ." WHERE category_name = '".$this->getCategoryName()."'";
             //." OR cat_id = ".$this->getCatId();
-        $statement = $this->getData($query);
-        return $statement;
+        return $this->getData($query);
     }
 
     /**
      * Liste des catégories parent.
-     * @return array|int|string
+     * @returnarray|int|string
      */
     public function getParentCategories(){
         $query = "SELECT * FROM ".TBL_Categories
             ." WHERE parent_cid = 0";
-        $statement = $this->getData($query);
-        return $statement;
+        return $this->getData($query);
     }
 
     public function getCatsFromParent(){
         $query = "SELECT * FROM ".TBL_Categories
             ." WHERE parent_cid = '".$this->getCatId()."' ";
-        $statement = $this->getData($query);
-        return $statement;
+        return $this->getData($query);
     }
 
 }

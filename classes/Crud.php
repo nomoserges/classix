@@ -4,13 +4,14 @@
 * et éviter des les changer dans tous les autres scripts
 **/
 
-define('TBL_Countries', 'countries');
+define('TBL_Regions', 'regions');
 define('TBL_Cities', 'cities');
 
 define('TBL_Adverts', 'adverts');
 define('TBL_Categories', 'categories');
 define('TBL_Images', 'images');
 define('TBL_Settings', 'settings');
+define('TBL_Settings_Prices', 'settings_prices');
 define('TBL_Users', 'users');
 
 /**

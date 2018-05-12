@@ -31,10 +31,22 @@ require_once "../_inc/_inc_header.php";
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav navbar-left">
                     <li><a href="./">Accueil</a></li>
-                    <li><a href="adm_countries.php">Localisations</a></li>
+                    <li><a href="adm_regions.php">Localisations</a></li>
                     <li><a href="adm_categories.php">Categories</a></li>
                     <li><a href="adm_ads.php">Annonces</a></li>
-                    <li><a href="adm_settings.php">Paramètres</a></li>
+                    <li>
+                        <a href data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">Paramètres
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="adm_settings.php">Infos Générales</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="adm_settings_prices.php?cat=texte">Tarifs textes</a></li>
+                            <li><a href="adm_settings_prices.php?cat=duree">Tarifs durées</a></li>
+                            <li><a href="adm_settings_prices.php?cat=image">Tarifs images</a></li>
+                        </ul>
+                    </li>
                     <li>
                         <a href class="dropdown-toggle" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">Utilisateurs

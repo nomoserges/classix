@@ -33,7 +33,7 @@ if( !empty($_POST) ){
             $library->alert("Email ou mot de passe introuvable");
             $_POST = array();
             unset($_POST);
-            $library->doReloadPage();
+            //$library->doReloadPage();
         } else {
             $resultStmt[0];
             $connectUser->setPseudo($resultStmt[0]['pseudo']);
@@ -64,7 +64,7 @@ if( !empty($_POST) ){
               <div class="input-icon">
                 <i class="icon fa fa-user"></i>
                 <input type="text" id="sender-email" class="form-control"
-                name="username" placeholder="Email / Pseudo"
+                name="username" placeholder="Email / Pseudo" autofocus
                        value="<?php $library->inputData($_POST['username']); ?>">
               </div>
               <span class="material-input"></span>

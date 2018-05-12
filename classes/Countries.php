@@ -65,14 +65,11 @@ class Countries extends Crud {
     public function insert(){
         $sqlQuery = "INSERT INTO ".TBL_Countries
         ." VALUES('".$this->getCountryCode()."', '".$this->getName()."', '".$this->getPhoneIndicator()."')";
-        $statement = $this->execute($sqlQuery);
-        return $statement;
+        return $this->execute($sqlQuery);
     }
 
     public function getList() {
-        $query = "SELECT * FROM ".TBL_Countries;
-        $statement = $this->getData($query);
-        return $statement;
+        return $this->getData("SELECT * FROM ".TBL_Countries);
     }
 
     public function getCountry(){
@@ -80,8 +77,7 @@ class Countries extends Crud {
         ." WHERE country_code = '".$this->getCountryCode()."'"
         ." OR name = '".$this->getName()."'"
         ." OR phone_indicator = '".$this->getPhoneIndicator()."'";
-        $statement = $this->getData($query);
-        return $statement;
+        return $this->getData($query);
     }
 
 

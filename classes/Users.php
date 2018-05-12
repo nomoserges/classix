@@ -247,8 +247,7 @@ class Users extends Crud {
     public function getUsersPerGroup(){
         $sqlQuery = "SELECT * FROM ".TBL_Users
             ." WHERE user_group ='".$this->getUserGroup()."'";
-        $statement = $this->getData($sqlQuery);
-        return $statement;
+        return $this->getData($sqlQuery);
     }
 
     /** Activer/Desactiver un compte
@@ -259,8 +258,7 @@ class Users extends Crud {
             ." SET is_enabled = ".$this->getisEnabled()
             ." WHERE pseudo = '".$this->getPseudo()."'"
             ." OR user_mail = '".$this->getUserMail()."'";
-        $statement = $this->execute($sqlQuery);
-        return $statement;
+        return $this->execute($sqlQuery);
     }
 
     /** Activer/Desactiver un compte
@@ -271,8 +269,7 @@ class Users extends Crud {
             ." SET is_deleted = 1, is_enabled=0"
             ." WHERE pseudo = '".$this->getPseudo()."'"
             ." OR user_mail = '".$this->getUserMail()."'";
-        $statement = $this->execute($sqlQuery);
-        return $statement;
+        return $this->execute($sqlQuery);
     }
 
     /** Mise à jour du profile
@@ -286,8 +283,7 @@ class Users extends Crud {
             ." ,phones = '".$this->getPhones()."'"
             ." WHERE pseudo = '".$this->getPseudo()."'"
             ." OR user_mail = '".$this->getUserMail()."'";
-        $statement = $this->execute($sqlQuery);
-        return $statement;
+        return $this->execute($sqlQuery);
     }
 
     public function changePassword(){
@@ -295,7 +291,6 @@ class Users extends Crud {
             ." SET user_password = '".sha1($this->getUserPassword())."'"
             ." WHERE pseudo = '".$this->getPseudo()."'"
             ." OR user_mail = '".$this->getUserMail()."'";
-        $statement = $this->execute($sqlQuery);
-        return $statement;
+        return $this->execute($sqlQuery);
     }
 }
