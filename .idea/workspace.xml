@@ -6,23 +6,7 @@
   <component name="ChangeListManager">
     <list id="9c0e51a5-7418-4766-8a98-7f301e8c847e" name="Mysql settings" comment="" />
     <list default="true" id="698f2a93-ea65-4406-b9b9-2c32f630fbcd" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/_inc/404.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/admin/adm_settings_prices.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classes/Settingprices.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/25a0f279-a2a6-4d1f-a240-97d0a4bc8656.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/25a0f279-a2a6-4d1f-a240-97d0a4bc8656.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/_inc_header.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/_inc_header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/adm_cities.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/adm_cities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/adm_regions.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/adm_regions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/adm_settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/adm_settings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/Categories.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Categories.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/Cities.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Cities.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/Countries.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Countries.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/Crud.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Crud.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/Regions.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Regions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/Settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Settings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/Users.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -315,7 +299,7 @@
       <workItem from="1525921184304" duration="494000" />
       <workItem from="1525949319398" duration="6527000" />
       <workItem from="1526039210043" duration="1120000" />
-      <workItem from="1526081791645" duration="11910000" />
+      <workItem from="1526081791645" duration="12203000" />
     </task>
     <task id="LOCAL-00001" summary="Update of db settings">
       <created>1525470400363</created>
@@ -380,15 +364,21 @@
       <option name="project" value="LOCAL" />
       <updated>1525734633719</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Change logic of settings and prices">
+      <created>1526095267471</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1526095267471</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="152901000" />
+    <option name="totallyTimeSpent" value="153194000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1366" height="694" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Full Stack Tools" order="7" />
@@ -397,9 +387,9 @@
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49926794" weight="0.26027396" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.55308217" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.30650684" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20058565" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20058565" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="right" id="Database" order="3" visible="true" weight="0.1500732" />
+      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.1500732" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3989726" />
@@ -428,7 +418,8 @@
     <MESSAGE value="user list in table and authorization to create user" />
     <MESSAGE value="Dumping database file" />
     <MESSAGE value="Update of user home and security pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update of user home and security pages" />
+    <MESSAGE value="Change logic of settings and prices" />
+    <option name="LAST_COMMIT_MESSAGE" value="Change logic of settings and prices" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/admin/index.php">
