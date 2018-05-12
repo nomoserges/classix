@@ -35,7 +35,35 @@
 <script type="text/javascript" src="<?php $library->baseurl(); ?>assets/contact-form-script.js"></script>
 <script type="text/javascript" src="<?php $library->baseurl(); ?>assets/jquery.themepunch.revolution.min.js"></script>
 <script type="text/javascript" src="<?php $library->baseurl(); ?>assets/jquery.themepunch.tools.min.js"></script>
-<script src="<?php $library->baseurl(); ?>assets/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="<?php $library->baseurl(); ?>assets/bootstrap-select.min.js"></script>
+<script type="application/javascript">
+    $(document).ready(function () {
+        /*Afficher l'onglet des images*/
+        $("#ads-general-next").click(function (e) {
+            e.preventDefault();
+            $("#ads-general").css("display", "none");
+            $("#ads-images").css("display", "inline-block");
+        });
+        /*Retourner à l'onglet general*/
+        $("#ads-images-previous").click(function (e) {
+            e.preventDefault();
+            $("#ads-images").css("display", "none");
+            $("#ads-general").css("display", "inline-block");
+        });
+        /*Afficher l'onglet contact*/
+        $("#ads-images-next").click(function (e) {
+            e.preventDefault();
+            $("#ads-images").css("display", "none");
+            $("#ads-contact").css("display", "inline-block");
+        });
+        /*Retourner à l'onglet images*/
+        $("#ads-contact-previous").click(function (e) {
+            e.preventDefault();
+            $("#ads-images").css("display", "inline-block");
+            $("#ads-contact").css("display", "none");
+        });
+    });
+</script>
 
 </body>
 </html>

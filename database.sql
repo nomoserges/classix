@@ -26,16 +26,22 @@ CREATE TABLE `adverts` (
   `idadvert` int(11) NOT NULL AUTO_INCREMENT,
   `pseudo` varchar(100) NOT NULL,
   `cat_id` int(11) DEFAULT NULL,
+  `city_name` varchar(100) NOT NULL,
   `title` varchar(45) NOT NULL,
   `description` tinytext NOT NULL,
+  `initial_price` int(11) DEFAULT NULL,
+  `tags` varchar(150) DEFAULT NULL,
   `date_published` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `close_published` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `contact_fullname` varchar(200) NOT NULL,
+  `contact_email` varchar(150) NOT NULL,
+  `contact_phone` varchar(15) NOT NULL,
+  `contact_address` varchar(150) NOT NULL,
   `status` enum('online','offline','pending') NOT NULL,
   `nb_views` int(11) NOT NULL DEFAULT '0',
   `payment_visa` tinyint(1) DEFAULT NULL,
   `payment_paypal` tinyint(1) DEFAULT NULL,
   `payment_cashier` tinyint(1) DEFAULT NULL,
-  `location_id` int(11) NOT NULL,
   `is_deleted` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`idadvert`),
   KEY `fk_adverts_users` (`pseudo`)
@@ -92,7 +98,7 @@ CREATE TABLE `cities` (
 --
 
 /*!40000 ALTER TABLE `cities` DISABLE KEYS */;
-INSERT INTO `cities` (`regionid`, `code_postal`, `city_name`) VALUES (1,101,'YAOUNDÉ'),(1,102,'BOUMNYEBEL'),(10,121,'MAROUA'),(10,122,'YAGOUA'),(2,201,'DOUALA'),(2,202,'BONABERI'),(2,203,'EDEA'),(2,204,'POUMA'),(2,205,'NKONGSAMBA'),(2,206,'YABASSI');
+INSERT INTO `cities` (`regionid`, `code_postal`, `city_name`) VALUES (1,101,'YAOUNDÉ'),(1,102,'BOUMNYEBEL'),(10,121,'MAROUA'),(10,122,'YAGOUA'),(2,201,'DOUALA'),(2,202,'BONABERI'),(2,203,'EDEA'),(2,204,'POUMA'),(2,205,'NKONGSAMBA'),(2,206,'YABASSI'),(3,301,'EBOLOWA'),(3,302,'KRIBI'),(4,401,'GAROUA'),(4,402,'PITOA'),(4,403,'GUIDER'),(4,404,'NGONG'),(4,405,'TOUROUA'),(5,501,'BERTOUA'),(5,502,'GAROUA-BOULAYE'),(5,503,'NDOKAYO'),(5,504,'BELABO'),(6,601,'BAFOUSSAM'),(7,701,'BUEA'),(7,702,'LIMBE'),(8,801,'BAMENDA'),(9,901,'NGAOUNDÉRÉ'),(9,902,'MEIGANGA'),(9,903,'TIBATI');
 /*!40000 ALTER TABLE `cities` ENABLE KEYS */;
 
 --
@@ -263,4 +269,4 @@ INSERT INTO `users` (`pseudo`, `user_mail`, `user_password`, `last_name`, `first
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-12  4:23:48
+-- Dump completed on 2018-05-13  0:09:10

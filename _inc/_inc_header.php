@@ -19,7 +19,8 @@
     <link rel="stylesheet" href="<?php $library->baseurl(); ?>assets/owl.theme.css" type="text/css">
     <link rel="stylesheet" href="<?php $library->baseurl(); ?>assets/settings.css" type="text/css">
     <link rel="stylesheet" href="<?php $library->baseurl(); ?>assets/responsive.css" type="text/css">
-    <link rel="stylesheet" href="<?php $library->baseurl(); ?>assets/bootstrap-select.min.css">
+    <link rel="stylesheet" href="<?php $library->baseurl(); ?>assets/bootstrap-select.min.css" type="text/css">
+    <!--<link rel="stylesheet" href="<?php /*$library->baseurl(); */?>assets/beanstalk.css" type="text/css">-->
       <style>
           /* Sticky footer styles
 -------------------------------------------------- */

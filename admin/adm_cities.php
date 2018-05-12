@@ -65,7 +65,7 @@ if( !empty($_POST) ){
             <div class="row">
                 <div class="col-md-12 col-lg-offset-4">
                     <h3 class="section-title">Villes de la région:
-                        <?php echo $library->outputField($regionInfos[0]['region_name']); ?>
+                        <?php $library->outputField($regionInfos[0]['region_name']); ?>
                     </h3>
                 </div>
                 <div class="col-md-12">

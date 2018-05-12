@@ -47,7 +47,7 @@ $parentCategories = $categories->getParentCategories();
                         <?php for($k=0; $k < sizeof($subCategories); $k++): ?>
                         <?php if($k < 6): ?>
                             <li>
-                                <a href="#"><?php echo $library->outputField($subCategories[$k]["category_name"]); ?></a>
+                                <a href="#"><?php $library->outputField($subCategories[$k]["category_name"]); ?></a>
                                 <span class="category-counter">3</span>
                             </li>
                         <?php endif; ?>

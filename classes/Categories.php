@@ -106,6 +106,9 @@ class Categories extends Crud {
         return $this->getData($query);
     }
 
+    /** Liste des sous-categories d'une categorie
+     * @return array|int|string
+     */
     public function getCatsFromParent(){
         $query = "SELECT * FROM ".TBL_Categories
             ." WHERE parent_cid = '".$this->getCatId()."' ";

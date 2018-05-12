@@ -95,7 +95,7 @@ if( isset($_GET['category_id']) && !empty($_GET['category_id'])){
                             <div class="panel panel-default">
                                 <div class="panel-body center">
                                     <h5>
-                                        <?php echo $library->outputField($subCategories[$i]["category_name"]); ?>
+                                        <?php $library->outputField($subCategories[$i]["category_name"]); ?>
                                     </h5>
                                 </div>
                                 <div class="panel-footer center">

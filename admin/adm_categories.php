@@ -112,7 +112,7 @@ if( !empty($_POST) ){
                                     <?php for($k=0; $k < sizeof($subCategories); $k++): ?>
                                     <?php if($k < 7): ?>
                                     <li>
-                                        <a href="#"><?php echo $library->outputField($subCategories[$k]["category_name"]); ?></a>
+                                        <a href="#"><?php $library->outputField($subCategories[$k]["category_name"]); ?></a>
                                     </li>
                                     <?php endif; ?>
                                     <?php endfor; ?>

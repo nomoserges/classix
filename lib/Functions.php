@@ -28,7 +28,7 @@ class Functions {
      * @return string
      */
     public function outputField($fieldDatas){
-        return html_entity_decode($fieldDatas);
+        echo html_entity_decode($fieldDatas);
     }
     /** Affichage des erreurs des formulaires
      * @param $variable

@@ -93,7 +93,7 @@ if( !empty($_POST) ){
         <div class="page-login-form box">
           <h3>Choix d'accès</h3>
           <ul class="form-links">
-            <li class="pull-left"><a href="/">Aller vers le site</a></li>
+            <li class="pull-left"><a href="./">Aller vers le site</a></li>
             <?php if($_SESSION['user']['user_group']== 'admin' || $_SESSION['user']['user_group']== 'manager'): ?>
             <li class="pull-right"><a href="admin/">Panel administration</a></li>
             <?php else: ?>
