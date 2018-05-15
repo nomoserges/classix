@@ -23,6 +23,14 @@ class Functions {
         }
     }
 
+    /** Prendre en paramètre un texte, ajouter des slashes,et
+     * faire du htmlentities
+     * @param $datas
+     * @return string
+     */
+    public function secureField($datas) {
+        return addslashes( htmlentities($datas) );
+    }
     /** Sortie du contenu des formulaires après htmlentities
      * @param $fieldDatas
      * @return string

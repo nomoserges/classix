@@ -11,7 +11,7 @@ if( !empty($_POST) ){
         $errorsFound = true;
     }
     /*  on verifie si la region n'existe pas encore   */
-    $regions->setRegionName($_POST['region_name']);
+    $regions->setRegionName($library->secureField($_POST['region_name']));
     if( $regions->getRegion() <> 0 ){
         $errors['error'] = "Informations déjà disponibles.";
         $errorsFound = true;
@@ -77,7 +77,7 @@ if( !empty($_POST) ){
                                 <div class="panel-body center">
                                     <h3>
                                         <a href="adm_cities.php?regionid=<?php echo $regionsList[$i]["regionid"]; ?>">
-                                            <?php echo $regionsList[$i]["region_name"]; ?>
+                                            <?php $library->outputField($regionsList[$i]["region_name"]); ?>
                                         </a>
                                     </h3>
                                 </div>

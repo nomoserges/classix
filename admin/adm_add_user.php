@@ -35,14 +35,14 @@ if(!empty($_POST)){
     }
 
     if( true === $fieldsStatus ) {
-        $newUser->setPseudo($_POST['pseudo']);
-        $newUser->setUserMail($_POST['user_mail']);
-        $newUser->setUserPassword("123456");
-        $newUser->setLastName($_POST['last_name']);
-        $newUser->setFirstName($_POST['first_name']);
-        $newUser->setAddress("");
-        $newUser->setPhones("");
-        $newUser->setUserGroup($_POST['user_group']);
+        $newUser->setPseudo($library->secureField($_POST['pseudo']));
+        $newUser->setUserMail($library->secureField($_POST['user_mail']));
+        $newUser->setUserPassword($library->secureField("123456"));
+        $newUser->setLastName($library->secureField($_POST['last_name']));
+        $newUser->setFirstName($library->secureField($_POST['first_name']));
+        $newUser->setAddress($library->secureField(""));
+        $newUser->setPhones($library->secureField(""));
+        $newUser->setUserGroup($library->secureField($_POST['user_group']));
         $resultStmt = $newUser->insert();
 
         if( $resultStmt === true ){
@@ -107,7 +107,7 @@ if(!empty($_POST)){
                         -->
                         <div class="form-group col-sm-12 col-lg-6">
                             <label class="radio-inline">
-                                <input type="radio" name="user_group" id="inlineRadio1" value="manager" checked> Gestionnaire
+                                <input type="radio" name="user_group" id="inlineRadio1" value="gestionnaire" checked> Gestionnaire
                             </label>
                         </div>
                         <div class="form-group col-sm-12 col-lg-6">

@@ -57,9 +57,10 @@ require_once "../_inc/_inc_header.php";
                             <li><a href="adm_add_user.php">Ajouter</a></li>
                             <li role="separator" class="divider"></li>
                             <?php endif; ?>
-                            <li><a href="adm_users.php?group=manager">Gestionnaires</a></li>
+                            <li><a href="adm_users.php?group=gestionnaire">Gestionnaires</a></li>
                             <li><a href="adm_users.php?group=admin">Administrateurs</a></li>
-                            <li><a href="adm_users.php?group=customer">Annonceurs</a></li>
+                            <li><a href="adm_users.php?group=personnel">Individus</a></li>
+                            <li><a href="adm_users.php?group=entreprise">Entreprises</a></li>
                         </ul>
                     </li>
 

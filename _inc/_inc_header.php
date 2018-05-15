@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Mvilongo-Machoudi">
     <title>Classix | <?php echo $pageTitle; ?></title>
-    <link rel="shortcut icon" href="http://demo.graygrids.com/themes/classix-demo/<?php $library->baseurl(); ?>assets/img/favicon.png">
     <link rel="stylesheet" href="<?php $library->baseurl(); ?>assets/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="<?php $library->baseurl(); ?>assets/jasny-bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="<?php $library->baseurl(); ?>assets/jasny-bootstrap.min.css" type="text/css">
@@ -20,7 +19,6 @@
     <link rel="stylesheet" href="<?php $library->baseurl(); ?>assets/settings.css" type="text/css">
     <link rel="stylesheet" href="<?php $library->baseurl(); ?>assets/responsive.css" type="text/css">
     <link rel="stylesheet" href="<?php $library->baseurl(); ?>assets/bootstrap-select.min.css" type="text/css">
-    <!--<link rel="stylesheet" href="<?php /*$library->baseurl(); */?>assets/beanstalk.css" type="text/css">-->
       <style>
           /* Sticky footer styles
 -------------------------------------------------- */

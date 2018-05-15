@@ -5,9 +5,6 @@ if(!isset($_SESSION['user'])||empty($_SESSION['user']['pseudo'])){
 }
 $pageTitle = "En attentes";
 include "_inc/_inc_header.php";
-if(!isset($_SESSION['user'])||empty($_SESSION['user']['pseudo'])){
-    $library->openUrl($library->getServerHost());
-}
 ?>
 <body>
 <?php include '_inc/_inc_navbar.php'; ?>

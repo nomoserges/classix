@@ -1,7 +1,7 @@
 <?php
 require_once 'lib/Functions.php';
 if(!isset($_SESSION['user'])||empty($_SESSION['user']['pseudo'])){
-    $library->openUrl($library->getServerHost());
+    $library->openUrl($library->getServerHost()."login.php");
 }
 $pageTitle = "Mes annonces";
 include "_inc/_inc_header.php";

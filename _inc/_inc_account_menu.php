@@ -12,12 +12,11 @@
                 <li>
                     <a href="account_security.php">Sécurité</a>
                 </li>
-              <li>
-                <a href="posts_ads.php">Publier</a>
-              </li>
             </ul>
           </div>
         </div>
+          <?php if(isset($_SESSION['user'])): ?>
+          <?php if( 'personnel' === $_SESSION['user']['user_group'] || 'entreprise' === $_SESSION['user']['user_group'] ): ?>
         <div class="collapse-box">
           <h5 class="collapset-title">Annonces </h5>
           <div aria-expanded="true" id="myads" class="panel-collapse collapse in">
@@ -34,6 +33,8 @@
             </ul>
           </div>
         </div>
+          <?php endif; ?>
+          <?php endif; ?>
         <div class="collapse-box">
           <h5 class="collapset-title">Fermer mon compte </h5>
           <div aria-expanded="true" id="close" class="panel-collapse collapse in">

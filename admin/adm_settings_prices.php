@@ -54,35 +54,35 @@ if( isset($_GET['cat']) && !empty($_GET['cat'])){
     <section id="content">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 col-lg-8 col-lg-offset-5">
+                <div class="col-sm-12 col-md-8 col-md-offset-5">
                     <h3 class="section-title">TARIFS <?php echo $_GET['cat'] ?></h3>
                 </div>
-                <div class="col-sm-12 col-lg-8 col-lg-offset-2">
+                <div class="col-sm-12 col-md-8 col-md-offset-2">
                     <?php $library->debug_errors( $errors); ?>
                     <form role="form" class="login-form" method="post"
                           action="<?php echo $_SERVER['PHP_SELF']; ?>?cat=<?php echo $_GET['cat'] ?>">
-                        <div class="form-group col-sm-12 col-lg-4">
+                        <div class="form-group col-sm-12 col-md-4">
                             <label for="min_value">Nombre min.</label>
                             <input type="text" class="form-control" id="min_value"
                                    placeholder="Nombre min" autofocus
                                    value="<?php echo $_POST['min_value']; ?>"
                                    name="min_value">
                         </div>
-                        <div class="form-group col-sm-12 col-lg-4">
+                        <div class="form-group col-sm-12 col-md-4">
                             <label for="max_value">Nombre max.</label>
                             <input type="text" class="form-control" id="max_value"
                                    placeholder="Nombre max"
                                    value="<?php echo $_POST['max_value']; ?>"
                                    name="max_value">
                         </div>
-                        <div class="form-group col-sm-12 col-lg-4">
+                        <div class="form-group col-sm-12 col-md-4">
                             <label for="price">Tarif.</label>
                             <input type="text" class="form-control" id="price"
                                    placeholder="Prix"
                                    value="<?php echo $_POST['price']; ?>"
                                    name="price">
                         </div>
-                        <div class="form-group col-sm-12 col-lg-6 col-lg-offset-4">
+                        <div class="form-group col-sm-12 col-md-6 col-md-offset-4">
                             <button type="submit" class="btn btn-primary"
                                     name="submit_setting" value="ok">Enregistrer</button>
                         </div>
@@ -95,7 +95,7 @@ if( isset($_GET['cat']) && !empty($_GET['cat'])){
                         <th width="30" class="center">#</th>
                         <th class="center">Marges</th>
                         <th class="center">Prix</th>
-                        <th width="160" class="center">...</th>
+                        <th class="center">...</th>
                         </thead>
                         <tbody>
                         <?php for($i=0; $i<sizeof($settingpricelist); $i++): ?>

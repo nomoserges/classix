@@ -16,20 +16,21 @@ if( sizeof($getSetting) > 0){
 }
 /*  Tableau de valeur des paramètres    */
 $setting = array(
-    "country_code" => $getSetting[0]['country_code'],
+    "country_code" => $getSetting[0]['country_code'] ,
     "country_name"  => $getSetting[0]['country_name'],
     "phone_indicator"  => $getSetting[0]['phone_indicator'],
     "currency"  => $getSetting[0]['currency'],
     "short_currency"  => $getSetting[0]['short_currency']
 );
+
 /*  Soumission du formulaire    */
 if (!empty($_POST)){
     $setting = array(
-        "country_code" => $_POST['country_code'],
-        "country_name"  => $_POST['country_name'],
-        "phone_indicator"  => $_POST['phone_indicator'],
-        "currency"  => $_POST['currency'],
-        "short_currency"  => $_POST['short_currency']
+        "country_code" => $library->secureField($_POST['country_code']),
+        "country_name"  => $library->secureField($_POST['country_name']),
+        "phone_indicator"  => $library->secureField($_POST['phone_indicator']),
+        "currency"  => $library->secureField($_POST['currency']),
+        "short_currency"  => $library->secureField($_POST['short_currency'])
     );
     /*  Contrôle des formulaires    */
     $fieldStatus = true;
@@ -45,17 +46,17 @@ if (!empty($_POST)){
     }elseif ( empty($_POST['currency'])||strlen($_POST['currency']) > 20 ){
         $errors['error'] = "Dévise incorrecte";
         $fieldStatus = false;
-    }elseif ( empty($_POST['short_currency'])||strlen($_POST['short_currency']) > 4 ){
+    }elseif ( empty($_POST['short_currency'])||strlen($_POST['short_currency']) > 5 ){
         $errors['error'] = "Abréviation de dévise incorrecte";
         $fieldStatus = false;
     }
 
     if ( $fieldStatus === true){
-        $settings->setCountryCode($_POST['country_code']);
-        $settings->setCountryName($_POST['country_name']);
-        $settings->setPhoneIndicator($_POST['phone_indicator']);
-        $settings->setCurrency($_POST['currency']);
-        $settings->setShortCurrency($_POST['short_currency']);
+        $settings->setCountryCode($library->secureField($_POST['country_code']));
+        $settings->setCountryName($library->secureField($_POST['country_name']));
+        $settings->setPhoneIndicator($library->secureField($_POST['phone_indicator']));
+        $settings->setCurrency($library->secureField($_POST['currency']));
+        $settings->setShortCurrency($library->secureField($_POST['short_currency']));
         switch ($_POST['submit_setting']){
             case 'insert':
                 $settings->insert();
@@ -83,7 +84,7 @@ if (!empty($_POST)){
                         <div class="form-group col-sm-12 col-lg-2">
                             <label for="countrycode">Code pays</label>
                             <input type="text" class="form-control" id="countrycode"
-                                   value="<?php if($setting['country_code']!=null) echo $setting['country_code']; ?>"
+                                   value="<?php if($setting['country_code']!=null) echo($setting['country_code']); ?>"
                                    name="country_code" autofocus>
                         </div>
                         <div class="form-group col-sm-12 col-lg-4">
@@ -94,23 +95,23 @@ if (!empty($_POST)){
                                    name="country_name">
                         </div>
                         <div class="form-group col-sm-12 col-lg-2">
-                            <label for="phoneindicator">Indicateur Tél</label>
+                            <label for="phoneindicator">Indic. Tél.</label>
                             <input type="text" class="form-control" id="phoneindicator"
-                                   value="<?php if($setting['phone_indicator']!=null) echo $setting['phone_indicator']; ?>"
+                                   value="<?php if($setting['phone_indicator']!=null) echo ($setting['phone_indicator']); ?>"
                                    name="phone_indicator">
                         </div>
                         <div class="form-group col-sm-12 col-lg-2">
                             <label for="currency">Dévise</label>
                             <input type="text" class="form-control" id="currency"
                                    placeholder="Dévise"
-                                   value="<?php if($setting['currency']!=null) echo $setting['currency']; ?>"
+                                   value="<?php if($setting['currency']!=null) echo ($setting['currency']); ?>"
                                    name="currency">
                         </div>
                         <div class="form-group col-sm-12 col-lg-2">
                             <label for="short_currency">Dévise Abr.</label>
                             <input type="text" class="form-control" id="short_currency"
                                    placeholder="Abréviation dévise"
-                                   value="<?php if($setting['short_currency']!=null) echo $setting['short_currency']; ?>"
+                                   value="<?php if($setting['short_currency']!=null) $library->outputField($setting['short_currency']); ?>"
                                    name="short_currency">
                         </div>
                         <div class="form-group col-sm-12 col-lg-6 col-lg-offset-3 center">

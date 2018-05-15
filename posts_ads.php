@@ -1,5 +1,13 @@
 <?php
 require_once 'lib/Functions.php';
+if(!isset($_SESSION['user'])||empty($_SESSION['user']['pseudo'])){
+    $library->openUrl($library->getServerHost());
+}
+/*  Les membres du personnel ne publient pas avec
+    leurs comptes du panel */
+if( $_SESSION['user']['user_group']=="gestionnaire" || $_SESSION['user']['user_group']=="admin" ){
+    $library->openUrl($library->getServerHost());
+}
 $pageTitle = "Bienvenue";
 include "_inc/_inc_header.php";
 ?>

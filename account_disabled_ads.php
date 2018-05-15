@@ -1,13 +1,10 @@
 <?php
 require_once 'lib/Functions.php';
 if(!isset($_SESSION['user'])||empty($_SESSION['user']['pseudo'])){
-    $library->openUrl($library->getServerHost());
+    $library->openUrl($library->getServerHost()."login.php");
 }
 $pageTitle = "Annonces désactivées";
 include "_inc/_inc_header.php";
-if(!isset($_SESSION['user'])||empty($_SESSION['user']['pseudo'])){
-    $library->openUrl($library->getServerHost());
-}
 ?>
 <body>
 <?php include '_inc/_inc_navbar.php'; ?>

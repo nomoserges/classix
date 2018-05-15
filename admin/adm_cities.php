@@ -33,8 +33,8 @@ if( !empty($_POST) ){
         $errorsFound = true;
     }
     /*  on verifie si la ville n'existe pas encore   */
-    $cities->setCodePostal($_POST['CodePostale']);
-    $cities->setCityName($_POST['CityName']);
+    $cities->setCodePostal($library->secureField($_POST['CodePostale']));
+    $cities->setCityName($library->secureField($_POST['CityName']));
     if( $cities->getCity() <> 0 ){
         $errors['error'] = "Informations déjà disponibles.";
         $errorsFound = true;

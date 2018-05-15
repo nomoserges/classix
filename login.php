@@ -31,8 +31,8 @@ if( !empty($_POST) ){
         //var_dump($resultStmt);
         if ($resultStmt === 0) {
             $library->alert("Email ou mot de passe introuvable");
-            $_POST = array();
-            unset($_POST);
+            /*$_POST = array();
+            unset($_POST);*/
             //$library->doReloadPage();
         } else {
             $resultStmt[0];
@@ -44,7 +44,7 @@ if( !empty($_POST) ){
             $connectUser->setPhones($resultStmt[0]['phones']);
             $connectUser->setUserGroup($resultStmt[0]['user_group']);
             $connectUser->_setSession();
-            $library->goBack();
+            $library->doReloadPage();
         }
 
     }
@@ -85,7 +85,7 @@ if( !empty($_POST) ){
             <button class="btn btn-common log-btn">Submit</button>
           </form>
           <ul class="form-links">
-            <li class="pull-left"><a href="#">Créer un compte</a></li>
+            <li class="pull-left"><a href="register.php">Créer un compte</a></li>
             <li class="pull-right"><a href="#">Mot de passe oublié ?</a></li>
           </ul>
         </div>

@@ -16,7 +16,7 @@ if( !empty($_POST) ){
     }
     /*  on verifie si la categorie n'existe pas encore   */
     $categories->setParentCid($_POST['parentCID']);
-    $categories->setCategoryName(htmlentities($_POST['categoryName']));
+    $categories->setCategoryName($library->secureField($_POST['categoryName']));
     $categories->setCatId(0);
     if( $categories->getCategory() <> 0 ){
         $errors['error'] = "Informations déjà disponibles.";
@@ -58,7 +58,7 @@ if( !empty($_POST) ){
                                 <option value="0">Pas de cat. parent</option>
                                 <?php for($j=0;$j<sizeof($parentCategories);$j++): ?>
                                 <option value="<?php echo $parentCategories[$j]['cat_id'] ?>">
-                                    <?php echo html_entity_decode($parentCategories[$j]['category_name']); ?>
+                                    <?php echo $parentCategories[$j]['category_name']; ?>
                                 </option>
                                 <?php endfor; ?>
                             </select>
@@ -99,7 +99,7 @@ if( !empty($_POST) ){
                                         $parentName = $parentCategories[$i]["category_name"];
                                     ?>
                                     <a href="adm_sub_categories.php?parentcid=<?php echo $parentCID; ?>">
-                                        <h5><?php echo html_entity_decode($parentCategories[$i]["category_name"]); ?></h5>
+                                        <h5><?php echo $library->outputField($parentCategories[$i]["category_name"]); ?></h5>
                                     </a>
                                 </div>
                                 <div class="category-content">

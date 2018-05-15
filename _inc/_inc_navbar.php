@@ -34,7 +34,7 @@
           </a>
           <ul class="dropdown-menu">
             <li><a href="account_home.php">Mon profil</a></li>
-            <?php if($_SESSION['user']['user_group'] === "admin" || $_SESSION['user']['user_group'] === "manager"): ?>
+            <?php if($_SESSION['user']['user_group'] === "admin" || $_SESSION['user']['user_group'] === "gestionnaire"): ?>
             <li><a href="admin/">Espace admin</a></li>
             <?php endif; ?>
             <li role="separator" class="divider"></li>

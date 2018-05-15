@@ -1427,7 +1427,7 @@
     </column>
     <column id="327" parent="246" name="user_group">
       <Position>8</Position>
-      <DataType>enum(&apos;admin&apos;, &apos;manager&apos;, &apos;customer&apos;)|0e</DataType>
+      <DataType>enum(&apos;admin&apos;, &apos;gestionnaire&apos;, &apos;personnel&apos;, &apos;entreprise&apos;)|0e</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>

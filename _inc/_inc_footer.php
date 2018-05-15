@@ -38,6 +38,10 @@
 <script type="text/javascript" src="<?php $library->baseurl(); ?>assets/bootstrap-select.min.js"></script>
 <script type="application/javascript">
     $(document).ready(function () {
+        $("#rememberRegister").click(function (e) {
+            /*e.preventDefault();*/
+            console.log($("#rememberCheckbox").checked);
+        });
         /*Afficher l'onglet des images*/
         $("#ads-general-next").click(function (e) {
             e.preventDefault();

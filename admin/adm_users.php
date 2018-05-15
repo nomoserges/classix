@@ -5,8 +5,9 @@
 
     $groupUserNames = array(
             "admin"=>"Administrateur",
-            "manager"=>"Gestionnaires",
-            "customer"=>"Clients"
+            "gestionnaire"=>"Gestionnaires",
+            "personnel"=>"Clients personnels",
+            "entreprise"=>"Clients entreprises",
     );
     if(isset($_GET['group']) && !empty($_GET['group'])){
         $users->setUserGroup($_GET['group']);
@@ -15,12 +16,14 @@
     /**  visibilité des boutons d'actions
      *  1 - actions possibles pour les gestionnaires et/ou administrateurs.
      *  2 - actions possibles par les administrateur. */
-    $btnAction = false;
-    if ($_GET['group']==='manager' || $_GET['group']==='admin') {
+    /*$btnAction = false;
+    if ($_GET['group']==='gestionnaire' || $_GET['group']==='admin') {
         if ("admin" === $_SESSION['user']['user_group']){
             $btnAction = true;
         }
-    }
+        $btnAction = true;
+    }*/
+    $btnAction = true;
     /** Gestion des actions supprimer, activer et desactiver
      *  d'un compte.
      */
@@ -87,7 +90,7 @@
                     <th class="center">Noms complets</th>
                     <th class="center">Contacts</th>
                     <?php if( true === $btnAction ): ?>
-                    <th width="160" class="center">Actions</th>
+                    <th class="center">Actions</th>
                     <?php endif; ?>
 
                 </thead>
