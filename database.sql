@@ -23,16 +23,19 @@ DROP TABLE IF EXISTS `adverts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `adverts` (
-  `idadvert` int(11) NOT NULL AUTO_INCREMENT,
+  `idadvert` char(36) NOT NULL,
   `pseudo` varchar(100) NOT NULL,
   `cat_id` int(11) DEFAULT NULL,
   `city_name` varchar(100) NOT NULL,
   `title` varchar(45) NOT NULL,
-  `description` tinytext NOT NULL,
+  `description` longtext NOT NULL,
+  `validity` tinyint(4) NOT NULL DEFAULT '1',
   `initial_price` int(11) DEFAULT NULL,
+  `price_text` int(11) NOT NULL DEFAULT '0',
+  `price_validity` int(11) NOT NULL DEFAULT '0',
+  `price_images` int(11) NOT NULL DEFAULT '0',
+  `price` int(11) NOT NULL DEFAULT '0',
   `tags` varchar(150) DEFAULT NULL,
-  `date_published` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `close_published` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `contact_fullname` varchar(200) NOT NULL,
   `contact_email` varchar(150) NOT NULL,
   `contact_phone` varchar(15) NOT NULL,
@@ -41,10 +44,12 @@ CREATE TABLE `adverts` (
   `nb_views` int(11) NOT NULL DEFAULT '0',
   `payment_visa` tinyint(1) DEFAULT NULL,
   `payment_paypal` tinyint(1) DEFAULT NULL,
+  `payment_bank` tinyint(1) DEFAULT NULL,
   `payment_cashier` tinyint(1) DEFAULT NULL,
   `is_deleted` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`idadvert`),
-  KEY `fk_adverts_users` (`pseudo`)
+  `publish_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `register_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idadvert`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -53,6 +58,7 @@ CREATE TABLE `adverts` (
 --
 
 /*!40000 ALTER TABLE `adverts` DISABLE KEYS */;
+INSERT INTO `adverts` (`idadvert`, `pseudo`, `cat_id`, `city_name`, `title`, `description`, `validity`, `initial_price`, `price_text`, `price_validity`, `price_images`, `price`, `tags`, `contact_fullname`, `contact_email`, `contact_phone`, `contact_address`, `status`, `nb_views`, `payment_visa`, `payment_paypal`, `payment_bank`, `payment_cashier`, `is_deleted`, `publish_date`, `register_date`) VALUES ('3gbi2rdo7e4z8s1tkvhymafpul6j9q05cwxn','dubois',3,'TIBATI','Salon de s&eacute;jour','One common flaw we\'ve seen in many frameworks is a lack of support for truly responsive text. While elements on the page resize fluidly, text still resizes on a fixed basis. To ameliorate this problem, for text heavy pages, we\'ve created a class that fluidly scales text size and line-height to optimize readability for the user. Line length stays between 45-80 characters and line height scales to be larger on smaller screens.',30,150000,200,2000,1500,153700,'OS,linux, software,kernel','Dubois Deschamps','dubois@site.com','00333 663 2255','12, Rue Abysse','pending',0,1,1,1,1,0,'2018-05-22 06:34:02','2018-05-22 06:34:02');
 /*!40000 ALTER TABLE `adverts` ENABLE KEYS */;
 
 --
@@ -98,7 +104,7 @@ CREATE TABLE `cities` (
 --
 
 /*!40000 ALTER TABLE `cities` DISABLE KEYS */;
-INSERT INTO `cities` (`regionid`, `code_postal`, `city_name`) VALUES (1,101,'YAOUNDÉ'),(1,102,'BOUMNYEBEL'),(10,121,'MAROUA'),(10,122,'YAGOUA'),(2,201,'DOUALA'),(2,202,'BONABERI'),(2,203,'EDEA'),(2,204,'POUMA'),(2,205,'NKONGSAMBA'),(2,206,'YABASSI'),(3,301,'EBOLOWA'),(3,302,'KRIBI'),(4,401,'GAROUA'),(4,402,'PITOA'),(4,403,'GUIDER'),(4,404,'NGONG'),(4,405,'TOUROUA'),(5,501,'BERTOUA'),(5,502,'GAROUA-BOULAYE'),(5,503,'NDOKAYO'),(5,504,'BELABO'),(6,601,'BAFOUSSAM'),(7,701,'BUEA'),(7,702,'LIMBE'),(8,801,'BAMENDA'),(9,901,'NGAOUNDÉRÉ'),(9,902,'MEIGANGA'),(9,903,'TIBATI');
+INSERT INTO `cities` (`regionid`, `code_postal`, `city_name`) VALUES (1,101,'YAOUNDÉ'),(1,102,'BOUMNYEBEL'),(10,121,'MAROUA'),(10,122,'YAGOUA'),(10,123,'M&Ocirc;K&Ocirc;L&Ocirc;'),(2,201,'DOUALA'),(2,202,'BONABERI'),(2,203,'EDEA'),(2,204,'POUMA'),(2,205,'NKONGSAMBA'),(2,206,'YABASSI'),(3,301,'EBOLOWA'),(3,302,'KRIBI'),(4,401,'GAROUA'),(4,402,'PITOA'),(4,403,'GUIDER'),(4,404,'NGONG'),(4,405,'TOUROUA'),(5,501,'BERTOUA'),(5,502,'GAROUA-BOULAYE'),(5,503,'NDOKAYO'),(5,504,'BELABO'),(6,601,'BAFOUSSAM'),(7,701,'BUEA'),(7,702,'LIMBE'),(8,801,'BAMENDA'),(9,901,'NGAOUNDÉRÉ'),(9,902,'MEIGANGA'),(9,903,'TIBATI');
 /*!40000 ALTER TABLE `cities` ENABLE KEYS */;
 
 --
@@ -135,13 +141,13 @@ DROP TABLE IF EXISTS `images`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `images` (
-  `filename` varchar(32) NOT NULL,
-  `idadvert` int(11) NOT NULL,
-  `status` enum('online','offline') NOT NULL DEFAULT 'online',
-  PRIMARY KEY (`filename`),
-  KEY `fk_adverts_images_adverts1_idx` (`idadvert`),
-  CONSTRAINT `fk_adverts_images` FOREIGN KEY (`idadvert`) REFERENCES `adverts` (`idadvert`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `idadvert` char(36) NOT NULL,
+  `file_name` varchar(41) NOT NULL,
+  `is_default` tinyint(1) NOT NULL DEFAULT '0',
+  `image_status` enum('online','deleted') NOT NULL DEFAULT 'online',
+  `record_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE KEY `images_file_name_uindex` (`file_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='images des annonces';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -149,6 +155,7 @@ CREATE TABLE `images` (
 --
 
 /*!40000 ALTER TABLE `images` DISABLE KEYS */;
+INSERT INTO `images` (`idadvert`, `file_name`, `is_default`, `image_status`, `record_date`) VALUES ('3gbi2rdo7e4z8s1tkvhymafpul6j9q05cwxn','e2amo6ybd70s1fi4qwjrxgl8nckp3u9h5zvt.png',0,'online','2018-05-22 06:34:02'),('3gbi2rdo7e4z8s1tkvhymafpul6j9q05cwxn','f3ls7athp01nvrzxie4qud29yj5mwgc8ob6k.png',0,'online','2018-05-22 06:34:02'),('3gbi2rdo7e4z8s1tkvhymafpul6j9q05cwxn','im56gya2r0qdeh3skxvpuln791o4cftwzb8j.png',1,'online','2018-05-22 06:34:02');
 /*!40000 ALTER TABLE `images` ENABLE KEYS */;
 
 --
@@ -201,7 +208,7 @@ CREATE TABLE `settings` (
 --
 
 /*!40000 ALTER TABLE `settings` DISABLE KEYS */;
-INSERT INTO `settings` (`country_code`, `country_name`, `phone_indicator`, `currency`, `short_currency`) VALUES ('CM','CAMEROUN','+237','Livre','£');
+INSERT INTO `settings` (`country_code`, `country_name`, `phone_indicator`, `currency`, `short_currency`) VALUES ('CM','CAMEROUN','+237','Franc CFA','F CFA');
 /*!40000 ALTER TABLE `settings` ENABLE KEYS */;
 
 --
@@ -218,7 +225,7 @@ CREATE TABLE `settings_prices` (
   `max_value` int(11) NOT NULL,
   `price` int(11) NOT NULL,
   PRIMARY KEY (`idprice`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COMMENT='Tarifs en fonction des durée';
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COMMENT='Tarifs en fonction des durée';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -226,7 +233,7 @@ CREATE TABLE `settings_prices` (
 --
 
 /*!40000 ALTER TABLE `settings_prices` DISABLE KEYS */;
-INSERT INTO `settings_prices` (`idprice`, `category`, `min_value`, `max_value`, `price`) VALUES (1,'texte',1,100,100),(2,'texte',101,200,150),(3,'duree',1,14,1500),(4,'duree',15,30,2000),(5,'image',1,1,500),(6,'texte',201,300,125);
+INSERT INTO `settings_prices` (`idprice`, `category`, `min_value`, `max_value`, `price`) VALUES (1,'texte',1,100,100),(2,'texte',101,200,150),(3,'duree',1,14,1500),(4,'duree',15,30,2000),(5,'image',1,1,500),(6,'texte',201,300,125),(7,'texte',301,500,200),(8,'texte',501,1000,300),(9,'texte',1001,1500,500);
 /*!40000 ALTER TABLE `settings_prices` ENABLE KEYS */;
 
 --
@@ -244,7 +251,7 @@ CREATE TABLE `users` (
   `first_name` varchar(45) DEFAULT NULL,
   `address` varchar(45) DEFAULT NULL,
   `phones` varchar(100) DEFAULT NULL,
-  `user_group` enum('admin','manager','customer') NOT NULL,
+  `user_group` enum('admin','gestionnaire','personnel','entreprise') NOT NULL,
   `is_enabled` tinyint(1) DEFAULT '1',
   `is_deleted` tinyint(1) DEFAULT '0',
   UNIQUE KEY `pseudo_UNIQUE` (`user_mail`),
@@ -257,7 +264,7 @@ CREATE TABLE `users` (
 --
 
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` (`pseudo`, `user_mail`, `user_password`, `last_name`, `first_name`, `address`, `phones`, `user_group`, `is_enabled`, `is_deleted`) VALUES ('atsama','atsama.daryl@gmail.com','c984aed014aec7623a54f0591da07a85fd4b762d','Atsama','Daryl','douala bassa','661000998','customer',1,0),('duvent','claudeduvent@locahost.com','7c4a8d09ca3762af61e59520943dc26494f8941b','Duvent','Claude','','','manager',0,0),('dubois','dubois@site.com','7c4a8d09ca3762af61e59520943dc26494f8941b','','','','','customer',1,0),('machoudi','machoudi@localhost.com','7c4a8d09ca3762af61e59520943dc26494f8941b','GBADAMASSI','MACHOUDI','','','admin',1,0),('martine','martine.mireille@gmail.com','7c4a8d09ca3762af61e59520943dc26494f8941b','Ngono','Martine','douala bassa','661000998','manager',1,0),('seannomo','nomoserges@gmail.com','81d29e3dd118edbedbf941e4118889658c8832a8','Mvilongo','Serge Anselme','Yaound&eacute;, cameroun','694088948','admin',1,0);
+INSERT INTO `users` (`pseudo`, `user_mail`, `user_password`, `last_name`, `first_name`, `address`, `phones`, `user_group`, `is_enabled`, `is_deleted`) VALUES ('atsama','atsama.daryl@gmail.com','c984aed014aec7623a54f0591da07a85fd4b762d','Atsama','Daryl','douala bassa','661000998','personnel',1,0),('duvent','claudeduvent@locahost.com','7c4a8d09ca3762af61e59520943dc26494f8941b','Duvent','Claude','','','gestionnaire',1,0),('dubois','dubois@site.com','7c4a8d09ca3762af61e59520943dc26494f8941b','Deschamps','Dubois','12, Rue Abysse','00333 663 2255','personnel',1,0),('machoudi','machoudi@localhost.com','7c4a8d09ca3762af61e59520943dc26494f8941b','GBADAMASSI','MACHOUDI','','','admin',1,0),('martine','martine.mireille@gmail.com','7c4a8d09ca3762af61e59520943dc26494f8941b','Ngono','Martine','douala bassa','661000998','gestionnaire',1,0),('seannomo','nomoserges@gmail.com','81d29e3dd118edbedbf941e4118889658c8832a8','Mvilongo','Serge Anselme','Yaound&eacute;, cameroun','694088948','admin',1,0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -269,4 +276,4 @@ INSERT INTO `users` (`pseudo`, `user_mail`, `user_password`, `last_name`, `first
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-13  0:09:10
+-- Dump completed on 2018-05-23 17:19:01

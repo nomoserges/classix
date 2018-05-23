@@ -10,7 +10,7 @@ include "_inc/_inc_header.php";
     <div class="container">
       <div class="main-text">
       <h1 class="intro-title">Bienvenue sur <span style="color: #3498DB">Advertize</span></h1>
-          <?php var_dump($_SESSION['user']); ?>
+          <?php //var_dump($_SESSION['user']); ?>
       <p>Achetez ou vender n'importe quoi d'une voiture
         utilisée à un téléphone portable et un ordinateur,  ou effectuer
         une recherche.
