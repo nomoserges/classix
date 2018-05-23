@@ -47,45 +47,28 @@ if(isset($_POST['form_security']) && $_POST['form_security'] == "ok"){
         <div class="row">
             <?php include '_inc/_inc_account_menu.php'; ?>
             <div class="col-sm-12 col-lg-9 page-content">
-
-                <div class="inner-box">
-                    <div class="welcome-msg">
-                        <h3 class="page-sub-header2 clearfix no-padding">
-                            Hello <?php echo $_SESSION['user']['prenoms']." ".$_SESSION['user']['nom']; ?>
-                        </h3>
-                    </div>
-                    <div id="accordion" class="panel-group">
-                        <!-- Mot de passe -->
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a href="#collapseB2" data-toggle="collapse"> Sécurité </a>
-                                </h4>
-                            </div>
-                            <div aria-expanded="false" class="panel-collapse collapse in" id="collapseB2">
-                                <div class="panel-body">
-                                    <?php $library->debug_errors($securityErrors); ?>
-                                    <form role="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                                        <div class="form-group col-sm-12 col-lg-6">
-                                            <label class="control-label">Nouveau mot de passe</label>
-                                            <input class="form-control" name="user_password" type="password">
-                                            <span class="material-input"></span>
-                                        </div>
-                                        <div class="form-group col-sm-12 col-lg-6">
-                                            <label class="control-label">Confirmez</label>
-                                            <input class="form-control" name="confirm_password" type="password">
-                                            <span class="material-input"></span>
-                                        </div>
-                                        <div class="form-group col-sm-12">
-                                            <button type="submit" class="btn btn-common"
-                                                    name="form_security" value="ok">Changer le mot de passe</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="welcome-msg">
+                    <h3 class="page-sub-header2 clearfix no-padding">
+                        Hello <?php echo $_SESSION['user']['prenoms']." ".$_SESSION['user']['nom']; ?>
+                    </h3>
                 </div>
+                <?php $library->debug_errors($securityErrors); ?>
+                <form role="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                    <div class="form-group col-sm-12 col-lg-6">
+                        <label class="control-label">Nouveau mot de passe</label>
+                        <input class="form-control" name="user_password" type="password">
+                        <span class="material-input"></span>
+                    </div>
+                    <div class="form-group col-sm-12 col-lg-6">
+                        <label class="control-label">Confirmez</label>
+                        <input class="form-control" name="confirm_password" type="password">
+                        <span class="material-input"></span>
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <button type="submit" class="btn btn-common"
+                                name="form_security" value="ok">Changer le mot de passe</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

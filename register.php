@@ -7,7 +7,6 @@ require_once "_inc/_inc_header.php";
 <?php
 require_once '_inc/_inc_navbar.php';
 require_once 'classes/Users.php';
-var_dump($_POST);
 $fieldsStatus = true;
 if(!empty($_POST)){
     $errors = array();

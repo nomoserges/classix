@@ -115,4 +115,14 @@ class Categories extends Crud {
         return $this->getData($query);
     }
 
+    /** Categorie et categorie parent
+     * @return string
+     */
+    public function detailedCategory(){
+        return $this->getData("SELECT c.category_name as cat_name,"
+            ." (SELECT d.category_name FROM ".TBL_Categories." d WHERE d.cat_id=c.parent_cid) AS cat_parent"
+            ." FROM ".TBL_Categories." c WHERE c.cat_id = '".$this->getCatId()."'");
+        //." OR cat_id = ".$this->getCatId();
+    }
+
 }

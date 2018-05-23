@@ -188,11 +188,11 @@ class Users extends Crud {
      */
     public function insert() {
         $sqlQuery = "INSERT INTO ".TBL_Users
-            ." VALUES( '".$this->getPseudo()."', '".$this->getUserMail()."', '".sha1($this->getUserPassword())."',"
-            ." '".$this->getLastName()."', '".$this->getFirstName()."', '".$this->getAddress()."', "
-            ."'".$this->getPhones()."', '".$this->getUserGroup()."', 1, 0)";
-        $statement = $this->execute($sqlQuery);
-        return $statement;
+            ." VALUES( '".$this->secureField($this->getPseudo())."', '".$this->secureField($this->getUserMail())
+            ."', '".sha1($this->getUserPassword())."', '".$this->secureField($this->getLastName())
+            ."', '".$this->secureField($this->getFirstName())."', '".$this->secureField($this->getAddress())."', "
+            ."'".$this->secureField($this->getPhones())."', '".$this->getUserGroup()."', 1, 0)";
+        return $this->execute($sqlQuery);
     }
 
 
@@ -203,8 +203,7 @@ class Users extends Crud {
             ." AND user_password = '".sha1($this->getUserPassword())."'"
             ." AND is_enabled=1 AND is_deleted=0 ";
         //echo $sqlQuery.'<br>';
-        $statement = $this->getData($sqlQuery);
-        return $statement;
+        return $this->getData($sqlQuery);
     }
 
     /** Vérifier si l'email ou le pseudo existe déjà

@@ -56,60 +56,42 @@ if( isset($_POST['form_details']) ){
     <div class="row">
       <?php include '_inc/_inc_account_menu.php'; ?>
       <div class="col-sm-12 col-lg-9 page-content">
-
-        <div class="inner-box">
-        <div class="welcome-msg">
-          <h3 class="page-sub-header2 clearfix no-padding">
-              Hello <?php echo $_SESSION['user']['prenoms']." ".$_SESSION['user']['nom']; ?>
-          </h3>
-        </div>
-        <div id="accordion" class="panel-group">
-          <!--  Informations utilisateur -->
-          <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a href="#collapseB1" data-toggle="collapse"> Mes details </a>
-            </h4>
+          <div class="welcome-msg">
+              <h3 class="page-sub-header2 clearfix no-padding">
+                  Hello <?php echo $_SESSION['user']['prenoms']." ".$_SESSION['user']['nom']; ?>
+              </h3>
           </div>
-          <div class="panel-collapse collapse in" id="collapseB1">
-            <div class="panel-body">
-              <?php $library->debug_errors($errors); ?>
-              <form role="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+          <?php $library->debug_errors($errors); ?>
+          <form role="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 
-                <div class="form-group col-sm-12 col-lg-6">
-                    <label class="control-label">Prénoms</label>
-                    <input class="form-control" name="first_name"
-                           value="<?php echo html_entity_decode($_SESSION['user']['prenoms']); ?>"
-                           type="text">
-                </div>
-                <div class="form-group col-sm-12 col-lg-6">
-                    <label class="control-label">Nom</label>
-                    <input class="form-control" name="last_name"
+              <div class="form-group col-sm-12 col-lg-6">
+                  <label class="control-label">Prénoms</label>
+                  <input class="form-control" name="first_name"
+                         value="<?php echo html_entity_decode($_SESSION['user']['prenoms']); ?>"
+                         type="text">
+              </div>
+              <div class="form-group col-sm-12 col-lg-6">
+                  <label class="control-label">Nom</label>
+                  <input class="form-control" name="last_name"
                          value="<?php echo html_entity_decode($_SESSION['user']['nom']); ?>" type="text">
-                </div>
-                <div class="form-group col-sm-12 col-lg-6">
-                    <label class="control-label">Adresse</label>
-                    <input class="form-control" name="address"
+              </div>
+              <div class="form-group col-sm-12 col-lg-6">
+                  <label class="control-label">Adresse</label>
+                  <input class="form-control" name="address"
                          value="<?php echo html_entity_decode($_SESSION['user']['adresse']); ?>"
-                           type="text">
-                </div>
-                <div class="form-group col-sm-12 col-lg-6">
-                    <label for="Phone" class="control-label">Téléphone</label>
-                    <input class="form-control" name="phones"
+                         type="text">
+              </div>
+              <div class="form-group col-sm-12 col-lg-6">
+                  <label for="Phone" class="control-label">Téléphone</label>
+                  <input class="form-control" name="phones"
                          value="<?php echo html_entity_decode($_SESSION['user']['telephones']); ?>"
-                           type="text">
-                </div>
-                <div class="form-group col-sm-12">
-                    <button type="submit" class="btn btn-common"
-                            name="form_details" value="ok">Mettre à jour</button>
-                </div>
-            </form>
-            </div>
-          </div>
-        </div>
-
-        </div>
-      </div>
+                         type="text">
+              </div>
+              <div class="form-group col-sm-12">
+                  <button type="submit" class="btn btn-common"
+                          name="form_details" value="ok">Mettre à jour</button>
+              </div>
+          </form>
       </div>
     </div>
   </div>

@@ -42,6 +42,30 @@
           /* Custom page CSS
           -------------------------------------------------- */
           /* Not required for template or sticky footer method. */
+          /* Customize container */
+          @media (min-width: 992px) {
+              .container {
+                  max-width: 1048px;
+              }
+          }
+          /* Responsive: Portrait tablets and up */
+          @media screen and (min-width: 992px) {
+              /* Remove the padding we set earlier */
+              .header,
+              .marketing,
+              .footer {
+                  padding-right: 0;
+                  padding-left: 0;
+              }
+              /* Space out the masthead */
+              .header {
+                  margin-bottom: 30px;
+              }
+              /* Remove the bottom border on the jumbotron for visual effect */
+              .jumbotron {
+                  border-bottom: 0;
+              }
+          }
 
           body > .container {
               padding: 60px 15px 0;

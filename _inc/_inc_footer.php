@@ -42,29 +42,17 @@
             /*e.preventDefault();*/
             console.log($("#rememberCheckbox").checked);
         });
-        /*Afficher l'onglet des images*/
-        $("#ads-general-next").click(function (e) {
-            e.preventDefault();
-            $("#ads-general").css("display", "none");
-            $("#ads-images").css("display", "inline-block");
+        $("#btn-form-01").click(function () {
+            $('#form-ads-tab li:eq(1) a').tab('show');
         });
-        /*Retourner à l'onglet general*/
-        $("#ads-images-previous").click(function (e) {
-            e.preventDefault();
-            $("#ads-images").css("display", "none");
-            $("#ads-general").css("display", "inline-block");
+        $("#btn-form-04").click(function () {
+            $('#form-ads-tab li:eq(1) a').tab('show');
         });
-        /*Afficher l'onglet contact*/
-        $("#ads-images-next").click(function (e) {
-            e.preventDefault();
-            $("#ads-images").css("display", "none");
-            $("#ads-contact").css("display", "inline-block");
+        $("#btn-form-02").click(function () {
+            $('#form-ads-tab a:first').tab('show');
         });
-        /*Retourner à l'onglet images*/
-        $("#ads-contact-previous").click(function (e) {
-            e.preventDefault();
-            $("#ads-images").css("display", "inline-block");
-            $("#ads-contact").css("display", "none");
+        $("#btn-form-03").click(function () {
+            $('#form-ads-tab a:last').tab('show');
         });
     });
 </script>

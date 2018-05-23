@@ -100,4 +100,11 @@ class Crud {
       return addslashes(htmlentities($input));
   }
 
+    public function mysqlDateToFrench($dateInput){
+        /* On sépare la date de l'heure avec le caractère espace */
+        $x = explode(" ", $dateInput);
+        /*  On reconverti la date au format dd/mm/aaa   */
+        $frenchDate = explode("-", $x[0]);
+        echo $frenchDate[2]."/".$frenchDate[1]."/".$frenchDate[0]." à ".$x[1];
+  }
 }

@@ -92,9 +92,40 @@ class Settingprices extends Crud {
         .", ".$this->getMaxValue().", ".$this->getPrice().")");
     }
 
+    /** Liste des tarifs par categories
+     * @return array|int|string
+     */
     public function getPricesPerCategory(){
         return $this->getData("SELECT * FROM ".$this->table
         ." WHERE category='".$this->getCategory()."'");
+    }
+
+    public function getPriceBetweenValues($qty){
+        return $this->getData("SELECT * FROM ".TBL_Settings_Prices
+            ." WHERE category='".$this->getCategory()."'"
+            ." AND min_value <= ".$qty." AND max_value >= ".$qty);
+    }
+
+    public function calculatePrice($qty){
+        /*  on cherche d'abord les groupes de tarifs */
+        /*  si on obtient un plage (min_value=max_value=1) alors le prix */
+        /*  est multiplier par le nombre d'articles */
+        $groupRows = $this->getPricesPerCategory();
+        if($groupRows == 0){
+            /*  Au cas où il y'aurait pas de correspondance de group de prix */
+            return 0;
+        }else{
+            for ($i=0; $i < sizeof($groupRows); $i++){
+                /*  on vérifie la marge associée    */
+                if( (intval($groupRows[$i]["min_value"]) <= $qty) && (intval($groupRows[$i]["max_value"]) >= $qty)  ){
+                    return intval($groupRows[$i]["price"]);
+                }elseif ( intval($groupRows[$i]['min_value']) === intval($groupRows[$i]['max_value']) ){
+                    return intval($groupRows[$i]['price']) * intval($qty);
+                }
+
+            }
+        }
+
     }
 
 }

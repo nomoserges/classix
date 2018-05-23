@@ -1,4 +1,4 @@
-<div class="col-sm-12 col-lg-3 page-sideabr">
+<div class="col-sm-12 col-lg-3 page-sidebar">
   <aside>
     <div class="inner-box">
       <div class="user-panel-sidebar">

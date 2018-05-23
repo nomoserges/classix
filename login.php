@@ -77,12 +77,14 @@ if( !empty($_POST) ){
               </div>
               <span class="material-input"></span>
             </div>
-            <div class="checkbox">
-              <input type="checkbox" id="remember" name="rememberme"
-              value="forever" style="float: left;">
-              <label for="remember">Se souvenir de moi</label>
-            </div>
-            <button class="btn btn-common log-btn">Submit</button>
+              <!--<div class="form-group col-sm-12">
+                  <div class="checkbox">
+                      <label class="checkbox-inline">
+                          <input type="checkbox" name="remember" value="1" > Se souvenir de moi
+                      </label>
+                  </div>
+              </div>-->
+            <button class="btn btn-common log-btn">Connexion</button>
           </form>
           <ul class="form-links">
             <li class="pull-left"><a href="register.php">Créer un compte</a></li>
