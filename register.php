@@ -55,6 +55,18 @@ if(!empty($_POST)){
 
         if( $resultStmt === true ){
             $newUser->_setSession();
+            /*  Envoi du mail de bienvenue */
+            $mailTexte = '<h1>Bienvenue sur Classix</h1><br/>'
+                .'Vos informations sont : <br/>'
+                .'<ul>'
+                .'<li><strong>Nom Complet: </strong>'.$newUser->getLastName().' '.$newUser->getFirstName().'</li>'
+                .'<li><strong>Pseudo: </strong>'.$newUser->getPseudo().'</li>'
+                .'<li><strong>Email: </strong>'.$newUser->getUserMail().'</li>'
+                .'</ul>';
+            mail($newUser->getUserMail(),
+                "Classix - Inscription",
+                $mailTexte,
+                "From: noreply@classix.net");
             $library->goBack();
         } else {
             $errors['error'] = "$resultStmt";
@@ -87,7 +99,7 @@ if(!empty($_POST)){
                 <div class="input-icon">
                     <i class="icon fa fa-user"></i>
                     <input type="text" class="form-control" name="last_name" placeholder="Votre nom"
-                           value="<?php $library->inputData($_POST['last_name']); ?>" />
+                           value="<?php $library->inputData($_POST['last_name']); ?>" autofocus />
                 </div>
                 <span class="material-input"></span>
             </div>

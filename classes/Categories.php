@@ -125,4 +125,12 @@ class Categories extends Crud {
         //." OR cat_id = ".$this->getCatId();
     }
 
+    /** Liste de toutes les catégories
+     * @return array|int|string
+     */
+    public function allCategories(){
+        return $this->getData("SELECT * FROM ".TBL_Categories);
+    }
+
+
 }

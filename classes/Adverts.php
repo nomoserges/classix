@@ -487,10 +487,10 @@ class Adverts extends Crud {
             .", ".$this->getPriceValidity().", ".$this->getPriceImages().", ".$this->getPrice()
             .", '".$this->secureField($this->getTags())."', '".$this->secureField($this->getContactFullname())
             ."', '".$this->secureField($this->getContactEmail())."', '".$this->secureField($this->getContactPhone())
-            ."', '".$this->secureField($this->getContactAddress())."', 'pending', '0', '".$this->getPaymentVisa()
+            ."', '".$this->secureField($this->getContactAddress())."', 'online', '0', '".$this->getPaymentVisa()
             ."', '".$this->getPaymentPaypal()."', '".$this->getPaymentBank()."', '".$this->getPaymentCashier()
             ."', '0', null, null)";
-        echo $query;
+        //echo $query;
         return $this->execute($query);
     }
 
@@ -514,6 +514,9 @@ class Adverts extends Crud {
             TBL_Adverts." WHERE idadvert='".$this->getIdadvert()."' LIMIT 1");
     }
 
+    /** Mise à jour des prix
+     * @return bool
+     */
     public function updatePrices(){
         return $this->execute("UPDATE ".TBL_Adverts." SET "
             ." price_text = ".$this->getPriceText().","
@@ -523,4 +526,21 @@ class Adverts extends Crud {
             ." WHERE idadvert='".$this->getIdadvert()."'");
     }
 
+    /** Liste des annonces publiées/déseactivées d'un utilisateur
+     * @return int|string
+     */
+    public function numberByStatus(){
+        return $this->getRows("SELECT * FROM ".TBL_Adverts
+            ." WHERE status='".$this->getStatus()
+            ."' AND pseudo='".$this->getPseudo()
+            ."' AND is_deleted=0");
+    }
+
+    /** Liste de toutes les annonces publiées
+     * @return array|int|string
+     */
+    public function allOnline(){
+        return $this->getData("SELECT * FROM ".TBL_Adverts
+            ." WHERE status='online' AND is_deleted=0");
+    }
 }

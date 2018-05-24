@@ -6,11 +6,14 @@
           <h5 class="collapset-title no-border">Mon espace </h5>
           <div aria-expanded="true" id="myclassified" class="panel-collapse collapse in">
             <ul class="acc-list">
-              <li>
-                <a href="account_home.php">Accueil</a>
-              </li>
+                <li>
+                    <a href="account_home.php">Accueil</a>
+                </li>
                 <li>
                     <a href="account_security.php">Sécurité</a>
+                </li>
+                <li>
+                    <a href="signout.php">Déconnexion</a>
                 </li>
             </ul>
           </div>
@@ -22,14 +25,14 @@
           <div aria-expanded="true" id="myads" class="panel-collapse collapse in">
             <ul class="acc-list">
               <li>
-                <a href="account_ads.php">Publiées<span class="badge">44</span></a>
+                <a href="account_ads.php">Publiées</a>
               </li>
               <li>
-                <a href="account_disabled_ads.php">Désactivées<span class="badge">49</span></a>
+                <a href="account_disabled_ads.php">Désactivées</a>
               </li>
-              <li>
+              <!--<li>
                 <a href="account_pending_ads.php">En attente <span class="badge">33</span></a>
-              </li>
+              </li>-->
             </ul>
           </div>
         </div>

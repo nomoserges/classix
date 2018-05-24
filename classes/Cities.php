@@ -69,10 +69,16 @@ class Cities extends Crud {
             ."', '".$this->getCityName()."')" );
     }
 
+    /** Liste de toutes les villes
+     * @return array|int|string
+     */
     public function getList() {
         return $this->getData("SELECT * FROM ".TBL_Cities);
     }
 
+    /** Retourner les informations d'une ville
+     * @return array|int|string
+     */
     public function getCity(){
         $query = "SELECT * FROM ".TBL_Cities
             //." WHERE country_code = '".$this->getCountryCode()."'"
@@ -81,6 +87,9 @@ class Cities extends Crud {
         return $this->getData($query);
     }
 
+    /** Les villes d'une région
+     * @return array|int|string
+     */
     public function getRegionCities(){
         $query = "SELECT * FROM ".TBL_Cities
             ." WHERE regionid = '".$this->getRegionid()."'";

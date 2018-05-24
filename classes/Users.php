@@ -285,11 +285,32 @@ class Users extends Crud {
         return $this->execute($sqlQuery);
     }
 
+    /** Changement du mot de passe
+     * @return bool
+     */
     public function changePassword(){
         $sqlQuery = "UPDATE ".TBL_Users
             ." SET user_password = '".sha1($this->getUserPassword())."'"
             ." WHERE pseudo = '".$this->getPseudo()."'"
             ." OR user_mail = '".$this->getUserMail()."'";
         return $this->execute($sqlQuery);
+    }
+
+    /** Utilisateurs clients du site
+     * @return array|int|string
+     */
+    public function frontendUsers(){
+        return $this->getData("SELECT * FROM ".TBL_Users
+            ." WHERE user_group IN ('personnel', 'entreprise')"
+            ." AND is_deleted = 0");
+    }
+
+    /** Utilisateurs du panel admin site
+     * @return array|int|string
+     */
+    public function backendUsers(){
+        return $this->getData("SELECT * FROM ".TBL_Users
+            ." WHERE user_group IN ('admin', 'gestionnaire')"
+            ." AND is_deleted = 0");
     }
 }

@@ -89,10 +89,12 @@ include "_inc/_inc_header.php";
             $annonce->setValidity($_POST['ads_validity']);
             $annonce->setInitialPrice($_POST['ads_price']);
             /*  Calcul des prix   */
-            $paramTarifs->setCategory("texte");
+            /*$paramTarifs->setCategory("texte");
             $annonce->setPriceText($paramTarifs->calculatePrice(strlen($_POST['ads_description'])));
             $paramTarifs->setCategory("duree");
-            $annonce->setPriceValidity($paramTarifs->calculatePrice(intval($_POST['ads_validity'])));
+            $annonce->setPriceValidity($paramTarifs->calculatePrice(intval($_POST['ads_validity'])));*/
+            $annonce->setPriceText(0);
+            $annonce->setPriceValidity(0);
             $annonce->setPriceImages(0);
             $annonce->setPrice(0);
             /*  Fin calcul des prix     */
@@ -107,8 +109,6 @@ include "_inc/_inc_header.php";
             $annonce->setPaymentCashier($_POST['ads_cashier']);
             $resultStmt = $annonce->insert();
             if ( $resultStmt == true ){
-                $_POST = array();
-                unset($_POST);
                 $annonceID = $annonce->getIdadvert();
                 if( isset($_FILES)){
                     $imageToUpload = new Images();
@@ -132,7 +132,11 @@ include "_inc/_inc_header.php";
                     }
                 }
                 /*Mise à jour des prix */
-                /*  Calcul des prix   */
+                $paramTarifs->setCategory("texte");
+                $annonce->setPriceText($paramTarifs->calculatePrice(strlen($_POST['ads_description'])));
+                $paramTarifs->setCategory("duree");
+                $annonce->setPriceValidity($paramTarifs->calculatePrice(intval($_POST['ads_validity'])));
+
                 $imageToUpload->setIdadvert($annonceID);
                 $images = $imageToUpload->getAdsImages();
                 $paramTarifs->setCategory("image");
@@ -141,8 +145,10 @@ include "_inc/_inc_header.php";
                     +intval($annonce->getPriceText())
                     +intval($annonce->getPriceValidity())
                     +intval($annonce->getPriceImages()));
+                //var_dump($annonce);
                 $annonce->updatePrices();
-
+                $_POST = array();
+                unset($_POST);
                 $library->alert("Annonce enregistrée!");
                 $library->doReloadPage();
             }else{

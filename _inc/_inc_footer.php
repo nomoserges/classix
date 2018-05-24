@@ -1,4 +1,56 @@
 <footer class="footer">
+
+    <section class="footer-Content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-12 wow fadeIn" data-wow-delay="0">
+                    <div class="widget">
+                        <h3 class="block-title">A propos de nous</h3>
+                        <div class="textwidget">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque lobortis tincidunt est, et euismod purus suscipit quis. Etiam euismod ornare elementum. Sed ex est, consectetur eget facilisis sed, auctor ut purus.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12 wow fadeIn" data-wow-delay="0.5">
+                    <div class="widget">
+                        <h3 class="block-title">Liens utiles</h3>
+                        <ul class="menu">
+                            <li><a href="./">Accueil</a></li>
+                            <li><a href="categories.php">Categories</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Table des prix</a></li>
+                            <li><a href="#">A propos</a></li>
+                            <li><a href="#">Contacts</a></li>
+                            <li><a href="#">Conditions d'utilisation</a></li>
+                            <li><a href="#">Confidentialité</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12 wow fadeIn" data-wow-delay="1s">
+                    <div class="widget">
+                        <h3 class="block-title">Derniers Tweets</h3>
+                        <div class="twitter-content clearfix">
+                            <ul class="twitter-list">
+                                <li class="clearfix">
+                                    <span>
+                                    Platform to Download and Submit #Bootstrap Templates via @ProductHunt @GrayGrids
+                                    <a href="#">http://t.co/cLo2w7rWOx</a>
+                                    </span>
+                                </li>
+                                <li class="clearfix">
+                                    <span>
+                                    Introducing Bootstrap 4 Features: What’s new, What’s gone!
+                                    <a href="#">http://t.co/cLo2w7rWOx</a>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
   <div id="copyright">
     <div class="container">
       <div class="row">
