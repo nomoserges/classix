@@ -52,6 +52,42 @@ $countCities = sizeof($cities->getList());
   </div>
 </section>
 
+
+<section class="featured-lis">
+    <div class="container">
+        <div class="row">
+<?php
+$adsOnline =  $annonces->getData("SELECT idadvert, title, description, nb_views, city_name, publish_date, price, "
+            ."(SELECT short_currency FROM ".TBL_Settings." LIMIT 1) AS short_currency, "
+            ."(SELECT file_name FROM ".TBL_Images." img WHERE img.idadvert=ads.idadvert AND is_default=1) AS feature_image FROM "
+            .TBL_Adverts." ads WHERE ads.status='online' AND is_deleted=0 ORDER BY publish_date DESC");
+$nbreAnnonces = sizeof($adsOnline);
+//var_dump($adsOnline);
+?>
+            <?php for ($i=0; $i<$nbreAnnonces-($nbreAnnonces-8); $i++): ?>
+                <div class="col-sm-12 col-md-3">
+                    <div class="thumbnail">
+                        <img src="uploads/<?php echo $adsOnline[$i]['feature_image']; ?>" alt="image"
+                             style="width: 200px; height: 150px;">
+                        <div class="caption">
+                            <h6 style="min-height: 28px;">
+                                <a href="details_ads.php?id=<?php echo $adsOnline[$i]['idadvert']; ?>"><?php echo $adsOnline[$i]['title']; ?>
+                                </a>
+                            </h6>
+                            <p>
+                                <small style="font-size: xx-small;">
+                                    Vues: <?php echo $adsOnline[$i]['nb_views']; ?>.&nbsp;
+                                    <?php echo $adsOnline[$i]['city_name']; ?>
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            <?php endfor; ?>
+        </div>
+    </div>
+</section>
+
 <section class="location">
     <div class="container">
         <div class="row localtion-list">
@@ -76,7 +112,8 @@ $countCities = sizeof($cities->getList());
         </div>
     </div>
 </section>
-
+<br />
+<br />
 <section id="counter">
     <div class="container">
         <div class="row">

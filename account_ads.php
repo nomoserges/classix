@@ -32,18 +32,19 @@ $listeAnnonces = $annonces->userList();
                   <?php for($i=0; $i < sizeof($listeAnnonces); $i++): ?>
                       <tr>
                           <td class="add-img-td">
-                              <a href="account_details_ads.php?id=<? echo $listeAnnonces[$i]["idadvert"]; ?>">
-                                  <img class="img-responsive" src="uploads/<? echo $listeAnnonces[$i]["feature_image"]; ?>" alt="img">
+                              <a href="account_details_ads.php?id=<?php echo $listeAnnonces[$i]["idadvert"]; ?>">
+                                  <img class="img-responsive" src="uploads/<?php echo $listeAnnonces[$i]["feature_image"]; ?>" alt="img">
                               </a>
                           </td>
                           <td class="ads-details-td">
-                              <h4><a href="account_details_ads.php?id=<? echo $listeAnnonces[$i]["idadvert"]; ?>"><? echo $listeAnnonces[$i]["title"]; ?></a></h4>
-                              <p> <strong> Publié le </strong>:<? echo $listeAnnonces[$i]["publish_date"]; ?> </p>
-                              <p> <strong>Visiteurs </strong>: <? echo $listeAnnonces[$i]["nb_views"]; ?>
-                                  <strong>Localisé à:</strong> <? echo $listeAnnonces[$i]["city_name"]; ?> </p>
+                              <h4><a href="account_details_ads.php?id=<?php echo $listeAnnonces[$i]["idadvert"]; ?>"><? echo $listeAnnonces[$i]["title"]; ?></a></h4>
+                              <p> <strong> Publié le </strong>:<?php echo $listeAnnonces[$i]["publish_date"]; ?> </p>
+                              <p> <strong>Visiteurs </strong>: <?php echo $listeAnnonces[$i]["nb_views"]; ?>
+                                  <strong>Localisé à:</strong> <?php echo $listeAnnonces[$i]["city_name"]; ?>
+                              </p>
                           </td>
                           <td class="price-td">
-                              <strong> <? echo $listeAnnonces[$i]["price"]." ".$listeAnnonces[$i]["short_currency"]; ?></strong>
+                              <strong> <?php echo $listeAnnonces[$i]["price"]." ".$listeAnnonces[$i]["short_currency"]; ?></strong>
                           </td>
                           <td class="action-td">
                               <p><a class="btn btn-info btn-xs">Désactiver</a></p>

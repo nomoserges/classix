@@ -65,10 +65,6 @@ $parentCategories = $categories->getParentCategories();
             </div>
             <?php endfor; ?>
 
-
-
-
-
         </div>
     </div>
 </section>

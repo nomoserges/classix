@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="@Classix-Database">
-  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.8">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.7">
     <root id="1">
-      <ServerVersion>10.1.29</ServerVersion>
       <DefaultCasing>exact</DefaultCasing>
     </root>
     <schema id="2" parent="1" name="advertize">
@@ -1216,17 +1215,14 @@
     <index id="285" parent="241" name="countries_code_uindex">
       <ColNames>country_code</ColNames>
       <Unique>1</Unique>
-      <Type>btree</Type>
     </index>
     <index id="286" parent="241" name="countries_name_uindex">
       <ColNames>name</ColNames>
       <Unique>1</Unique>
-      <Type>btree</Type>
     </index>
     <index id="287" parent="241" name="countries_phone_indicator_uindex">
       <ColNames>phone_indicator</ColNames>
       <Unique>1</Unique>
-      <Type>btree</Type>
     </index>
     <key id="288" parent="241" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
@@ -1281,7 +1277,6 @@
     <index id="297" parent="242" name="images_file_name_uindex">
       <ColNames>file_name</ColNames>
       <Unique>1</Unique>
-      <Type>btree</Type>
     </index>
     <key id="298" parent="242" name="images_file_name_uindex">
       <ColNames>file_name</ColNames>
@@ -1303,7 +1298,6 @@
     <index id="301" parent="243" name="regions_region_name_uindex">
       <ColNames>region_name</ColNames>
       <Unique>1</Unique>
-      <Type>btree</Type>
     </index>
     <key id="302" parent="243" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
@@ -1347,27 +1341,22 @@
     <index id="309" parent="244" name="settings_country_code_uindex">
       <ColNames>country_code</ColNames>
       <Unique>1</Unique>
-      <Type>btree</Type>
     </index>
     <index id="310" parent="244" name="settings_country_name_uindex">
       <ColNames>country_name</ColNames>
       <Unique>1</Unique>
-      <Type>btree</Type>
     </index>
     <index id="311" parent="244" name="settings_phone_indicator_uindex">
       <ColNames>phone_indicator</ColNames>
       <Unique>1</Unique>
-      <Type>btree</Type>
     </index>
     <index id="312" parent="244" name="settings_currency_uindex">
       <ColNames>currency</ColNames>
       <Unique>1</Unique>
-      <Type>btree</Type>
     </index>
     <index id="313" parent="244" name="settings_short_currency_uindex">
       <ColNames>short_currency</ColNames>
       <Unique>1</Unique>
-      <Type>btree</Type>
     </index>
     <key id="314" parent="244" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
@@ -1489,12 +1478,10 @@
     <index id="336" parent="246" name="users_pseudo_uindex">
       <ColNames>pseudo</ColNames>
       <Unique>1</Unique>
-      <Type>btree</Type>
     </index>
     <index id="337" parent="246" name="pseudo_UNIQUE">
       <ColNames>user_mail</ColNames>
       <Unique>1</Unique>
-      <Type>btree</Type>
     </index>
     <key id="338" parent="246" name="users_pseudo_uindex">
       <ColNames>pseudo</ColNames>

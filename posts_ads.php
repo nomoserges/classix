@@ -157,8 +157,6 @@ include "_inc/_inc_header.php";
         }
     }
 
-
-
 ?>
 <section id="content">
     <div class="container">
