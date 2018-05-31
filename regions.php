@@ -12,9 +12,8 @@ $parametres = new Settings();
 $parametre = $parametres->getsettings();
 require_once "classes/Adverts.php";
 $advert = new Adverts();
-
-require_once 'classes/Categories.php';
-$category = new Categories();
+require_once 'classes/Cities.php';
+$cities = new Cities();
 
 $sqlQuery = "SELECT ads.idadvert, ads.title, ads.description, ads.city_name, ads.nb_views, cat.category_name,"
     ." publish_date, price, "
@@ -24,7 +23,9 @@ $sqlQuery = "SELECT ads.idadvert, ads.title, ads.description, ads.city_name, ads
     ."image_status='online') AS nb_images"
     ." FROM ".TBL_Adverts." ads"
     ." INNER JOIN ".TBL_Categories." cat ON cat.cat_id = ads.cat_id"
-    ." WHERE ads.status='online' AND ads.is_deleted=0 AND cat.cat_id = ".$_GET['id'];
+    ." INNER JOIN ".TBL_Cities." ct ON ct.city_name = ads.city_name"
+    ." INNER JOIN ".TBL_Regions." rg ON rg.regionid = ct.regionid"
+    ." WHERE ads.status='online' AND ads.is_deleted=0 AND rg.regionid = ".$_GET['id'];
 $adsList = $advert->getData($sqlQuery);
 ?>
     <div id="content">
@@ -33,12 +34,9 @@ $adsList = $advert->getData($sqlQuery);
                 <!--menu de gauche-->
                 <div class="col-sm-12 col-lg-3 page-sidebar">
                     <?php
-                    $catGroupees = $category->getData("SELECT cat1.cat_id, cat1.category_name,"
-                        ." (SELECT count(cat2.cat_id)"
-                        ." FROM ".TBL_Categories." cat2"
-                        ." WHERE cat2.parent_cid=cat1.cat_id) AS sub_cat"
-                        ." FROM ".TBL_Categories." cat1"
-                        ." WHERE cat1.parent_cid = 0");
+                        $cities->setRegionid($_GET['id']);
+                        $citiesList = $cities->getRegionCities();
+                        //var_dump($citiesList);
                     ?>
 
                     <aside>
@@ -73,16 +71,16 @@ $adsList = $advert->getData($sqlQuery);
                             <div class="categories">
                                 <div class="widget-title">
                                     <i class="fa fa-align-justify"></i>
-                                    <h4>Categories</h4>
+                                    <h4>Villes</h4>
                                 </div>
                                 <div class="categories-list">
                                     <ul>
-                                        <?php for ($j=0; $j<sizeof($catGroupees); $j++): ?>
+                                        <?php for ($j=0; $j<sizeof($citiesList); $j++): ?>
                                             <li>
-                                                <a href="main_categorie.php?id<?php echo $catGroupees[$j]['cat_id']; ?>" style="font-size: x-small;">
-                                                    <?php $library->outputField($catGroupees[$j]['category_name']); ?>
+                                                <a href="cities.php?id=<?php echo $citiesList[$j]['city_name']; ?>" style="font-size: x-small;">
+                                                    <?php $library->outputField($citiesList[$j]['city_name']); ?>
                                                     <span class="category-counter">
-                                                        <?php echo $catGroupees[$j]['sub_cat']; ?>
+                                                        <?php echo $citiesList[$j]['NB_ADS']; ?>
                                                     </span>
                                                 </a>
                                             </li>

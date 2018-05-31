@@ -91,7 +91,8 @@ class Cities extends Crud {
      * @return array|int|string
      */
     public function getRegionCities(){
-        $query = "SELECT * FROM ".TBL_Cities
+        $query = "SELECT ct.*, (SELECT COUNT(ads.city_name) FROM "
+            .TBL_Adverts." ads WHERE ads.city_name=ct.city_name) as NB_ADS FROM ".TBL_Cities." ct"
             ." WHERE regionid = '".$this->getRegionid()."'";
         return $this->getData($query);
     }

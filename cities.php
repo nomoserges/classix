@@ -12,7 +12,6 @@ $parametres = new Settings();
 $parametre = $parametres->getsettings();
 require_once "classes/Adverts.php";
 $advert = new Adverts();
-
 require_once 'classes/Categories.php';
 $category = new Categories();
 
@@ -24,7 +23,8 @@ $sqlQuery = "SELECT ads.idadvert, ads.title, ads.description, ads.city_name, ads
     ."image_status='online') AS nb_images"
     ." FROM ".TBL_Adverts." ads"
     ." INNER JOIN ".TBL_Categories." cat ON cat.cat_id = ads.cat_id"
-    ." WHERE ads.status='online' AND ads.is_deleted=0 AND cat.cat_id = ".$_GET['id'];
+    ." INNER JOIN ".TBL_Cities." ct ON ct.city_name = ads.city_name"
+    ." WHERE ads.status='online' AND ads.is_deleted=0 AND ct.city_name = '".$_GET['id']."'";
 $adsList = $advert->getData($sqlQuery);
 ?>
     <div id="content">
@@ -35,40 +35,13 @@ $adsList = $advert->getData($sqlQuery);
                     <?php
                     $catGroupees = $category->getData("SELECT cat1.cat_id, cat1.category_name,"
                         ." (SELECT count(cat2.cat_id)"
-                        ." FROM ".TBL_Categories." cat2"
+                        ." FROM categories cat2"
                         ." WHERE cat2.parent_cid=cat1.cat_id) AS sub_cat"
-                        ." FROM ".TBL_Categories." cat1"
+                        ." FROM categories cat1"
                         ." WHERE cat1.parent_cid = 0");
                     ?>
 
                     <aside>
-                        <div class="inner-box">
-                            <div class="widget-title">
-                                <h4>Plus vues</h4>
-                            </div>
-                            <div class="advimg">
-                                <ul class="featured-list">
-                                    <li>
-                                        <img alt="" src="assets/img1.jpg">
-                                        <div class="hover">
-                                            <a href="http://demo.graygrids.com/themes/classix-demo/category.html#"><span>$49</span></a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <img alt="" src="assets/img2.jpg">
-                                        <div class="hover">
-                                            <a href="http://demo.graygrids.com/themes/classix-demo/category.html#"><span>$49</span></a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <img alt="" src="assets/img3.jpg">
-                                        <div class="hover">
-                                            <a href="http://demo.graygrids.com/themes/classix-demo/category.html#"><span>$49</span></a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
                         <div class="inner-box">
                             <div class="categories">
                                 <div class="widget-title">
@@ -79,7 +52,8 @@ $adsList = $advert->getData($sqlQuery);
                                     <ul>
                                         <?php for ($j=0; $j<sizeof($catGroupees); $j++): ?>
                                             <li>
-                                                <a href="main_categorie.php?id<?php echo $catGroupees[$j]['cat_id']; ?>" style="font-size: x-small;">
+                                                <a href="main_categorie.php?id=<?php echo $catGroupees[$j]['cat_id']; ?>"
+                                                   style="font-size: x-small;">
                                                     <?php $library->outputField($catGroupees[$j]['category_name']); ?>
                                                     <span class="category-counter">
                                                         <?php echo $catGroupees[$j]['sub_cat']; ?>

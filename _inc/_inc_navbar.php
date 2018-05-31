@@ -16,6 +16,7 @@
       <ul class="nav navbar-nav navbar-left">
         <li><a href="./"></i>Accueil</a></li>
         <li><a href="categories.php">Categories</a></li>
+        <li><a href="localisations.php">Localisations</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="postadd">

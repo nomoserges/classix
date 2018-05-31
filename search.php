@@ -56,9 +56,9 @@ $adsList = $advert->getData($searchQuery);
                 <?php
                 $catGroupees = $category->getData("SELECT cat1.cat_id, cat1.category_name,"
                     ." (SELECT count(cat2.cat_id)"
-                    ." FROM categories cat2"
+                    ." FROM ".TBL_Categories." cat2"
                     ." WHERE cat2.parent_cid=cat1.cat_id) AS sub_cat"
-                    ." FROM categories cat1"
+                    ." FROM ".TBL_Categories." cat1"
                     ." WHERE cat1.parent_cid = 0");
                 ?>
 
@@ -100,7 +100,7 @@ $adsList = $advert->getData($searchQuery);
                                 <ul>
                                     <?php for ($j=0; $j<sizeof($catGroupees); $j++): ?>
                                         <li>
-                                            <a href="sub_categories.php" style="font-size: x-small;">
+                                            <a href="main_categorie.php?id<?php echo $catGroupees[$j]['cat_id']; ?>" style="font-size: x-small;">
                                                 <?php $library->outputField($catGroupees[$j]['category_name']); ?>
                                                 <span class="category-counter">
                                                         <?php echo $catGroupees[$j]['sub_cat']; ?>
@@ -153,7 +153,7 @@ $adsList = $advert->getData($searchQuery);
                                     </span>
                                 </div>
                                 <div class="item_desc">
-                                    <?php echo substr($adsList[$i]['description'], 0, 128) ?>
+                                    <?php echo substr($adsList[$i]['description'], 0, 124) ?>&nbsp;...
                                 </div>
                             </div>
                         </div>
@@ -173,4 +173,5 @@ $adsList = $advert->getData($searchQuery);
 
         </div>
     </div>
-    <?php include '_inc/_inc_footer.php'; ?>
+</div>
+<?php include '_inc/_inc_footer.php'; ?>

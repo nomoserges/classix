@@ -527,7 +527,7 @@ class Adverts extends Crud {
             ." WHERE idadvert='".$this->getIdadvert()."'");
     }
 
-    /** Liste des annonces publiées/déseactivées d'un utilisateur
+    /** Nombre d'annonces publiées/déseactivées d'un utilisateur
      * @return int|string
      */
     public function numberByStatus(){

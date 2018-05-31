@@ -110,8 +110,9 @@ class Categories extends Crud {
      * @return array|int|string
      */
     public function getCatsFromParent(){
-        $query = "SELECT * FROM ".TBL_Categories
-            ." WHERE parent_cid = '".$this->getCatId()."' ";
+        $query = "SELECT cat.*, (SELECT COUNT(ads.cat_id) FROM "
+            .TBL_Adverts." ads WHERE ads.cat_id=cat.cat_id) as NB_ADS FROM ".TBL_Categories." cat "
+            ." WHERE cat.parent_cid = '".$this->getCatId()."' ";
         return $this->getData($query);
     }
 

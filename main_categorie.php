@@ -24,7 +24,7 @@ $sqlQuery = "SELECT ads.idadvert, ads.title, ads.description, ads.city_name, ads
     ."image_status='online') AS nb_images"
     ." FROM ".TBL_Adverts." ads"
     ." INNER JOIN ".TBL_Categories." cat ON cat.cat_id = ads.cat_id"
-    ." WHERE ads.status='online' AND ads.is_deleted=0 AND cat.cat_id = ".$_GET['id'];
+    ." WHERE ads.status='online' AND ads.is_deleted=0 AND cat.parent_cid = ".$_GET['id'];
 $adsList = $advert->getData($sqlQuery);
 ?>
     <div id="content">
@@ -33,42 +33,11 @@ $adsList = $advert->getData($sqlQuery);
                 <!--menu de gauche-->
                 <div class="col-sm-12 col-lg-3 page-sidebar">
                     <?php
-                    $catGroupees = $category->getData("SELECT cat1.cat_id, cat1.category_name,"
-                        ." (SELECT count(cat2.cat_id)"
-                        ." FROM ".TBL_Categories." cat2"
-                        ." WHERE cat2.parent_cid=cat1.cat_id) AS sub_cat"
-                        ." FROM ".TBL_Categories." cat1"
-                        ." WHERE cat1.parent_cid = 0");
+                    $category->setCatId($_GET['id']);
+                    $catGroupees = $category->getCatsFromParent();
                     ?>
 
                     <aside>
-                        <div class="inner-box">
-                            <div class="widget-title">
-                                <h4>Plus vues</h4>
-                            </div>
-                            <div class="advimg">
-                                <ul class="featured-list">
-                                    <li>
-                                        <img alt="" src="assets/img1.jpg">
-                                        <div class="hover">
-                                            <a href="http://demo.graygrids.com/themes/classix-demo/category.html#"><span>$49</span></a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <img alt="" src="assets/img2.jpg">
-                                        <div class="hover">
-                                            <a href="http://demo.graygrids.com/themes/classix-demo/category.html#"><span>$49</span></a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <img alt="" src="assets/img3.jpg">
-                                        <div class="hover">
-                                            <a href="http://demo.graygrids.com/themes/classix-demo/category.html#"><span>$49</span></a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
                         <div class="inner-box">
                             <div class="categories">
                                 <div class="widget-title">
@@ -79,10 +48,10 @@ $adsList = $advert->getData($sqlQuery);
                                     <ul>
                                         <?php for ($j=0; $j<sizeof($catGroupees); $j++): ?>
                                             <li>
-                                                <a href="main_categorie.php?id<?php echo $catGroupees[$j]['cat_id']; ?>" style="font-size: x-small;">
+                                                <a href="sub_categories.php?id=<?php echo $catGroupees[$j]['cat_id']; ?>" style="font-size: x-small;">
                                                     <?php $library->outputField($catGroupees[$j]['category_name']); ?>
                                                     <span class="category-counter">
-                                                        <?php echo $catGroupees[$j]['sub_cat']; ?>
+                                                        <?php echo $catGroupees[$j]['NB_ADS']; ?>
                                                     </span>
                                                 </a>
                                             </li>

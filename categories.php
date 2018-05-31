@@ -33,8 +33,13 @@ $parentCategories = $categories->getParentCategories();
                         $parentCID = $parentCategories[$i]["cat_id"];
                         $parentName = $parentCategories[$i]["category_name"];
                         ?>
-                        <a href="#">
-                            <h5><?php echo html_entity_decode($parentCategories[$i]["category_name"]); ?></h5>
+                        <a href="main_categorie.php?id=<?php echo $parentCategories[$i]["cat_id"] ?>">
+                            <h6>
+                            <?php echo substr(html_entity_decode($parentCategories[$i]["category_name"]), 0, 30); ?>
+                            <?php if (strlen(html_entity_decode($parentCategories[$i]["category_name"])) > 30): ?>
+                                &nbsp;...
+                            <?php endif; ?>
+                            </h6>
                         </a>
                     </div>
                     <div class="category-content">
@@ -47,8 +52,10 @@ $parentCategories = $categories->getParentCategories();
                         <?php for($k=0; $k < sizeof($subCategories); $k++): ?>
                         <?php if($k < 6): ?>
                             <li>
-                                <a href="#"><?php $library->outputField($subCategories[$k]["category_name"]); ?></a>
-                                <span class="category-counter">3</span>
+                                <a href="sub_categories.php?id=<?php echo $subCategories[$k]["cat_id"]; ?>">
+                                    <?php $library->outputField($subCategories[$k]["category_name"]); ?>
+                                </a>
+                                <span class="category-counter"><?php echo $subCategories[$k]["NB_ADS"]; ?></span>
                             </li>
                         <?php endif; ?>
                         <?php endfor; ?>
