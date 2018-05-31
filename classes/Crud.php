@@ -6,7 +6,6 @@
 
 define('TBL_Regions', 'regions');
 define('TBL_Cities', 'cities');
-
 define('TBL_Adverts', 'adverts');
 define('TBL_Categories', 'categories');
 define('TBL_Images', 'images');
