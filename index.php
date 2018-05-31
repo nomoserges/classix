@@ -24,7 +24,7 @@ $countCities = sizeof($cities->getList());
   <div class="overlay">
     <div class="container">
       <div class="main-text">
-      <h1 class="intro-title">Bienvenue sur <span style="color: #3498DB">Advertize</span></h1>
+      <h1 class="intro-title">Bienvenue sur <span style="color: #3498DB">Classix - Annonces</span></h1>
           <?php //var_dump($_SESSION['user']); ?>
       <p>Achetez ou vender n'importe quoi d'une voiture
         utilisée à un téléphone portable et un ordinateur,  ou effectuer
@@ -64,25 +64,27 @@ $adsOnline =  $annonces->getData("SELECT idadvert, title, description, nb_views,
 $nbreAnnonces = sizeof($adsOnline);
 //var_dump($adsOnline);
 ?>
-            <?php for ($i=0; $i<$nbreAnnonces-($nbreAnnonces-8); $i++): ?>
-                <div class="col-sm-12 col-md-3">
-                    <div class="thumbnail">
-                        <img src="uploads/<?php echo $adsOnline[$i]['feature_image']; ?>" alt="image"
-                             style="width: 200px; height: 150px;">
-                        <div class="caption">
-                            <h6 style="min-height: 28px;">
-                                <a href="details_ads.php?id=<?php echo $adsOnline[$i]['idadvert']; ?>"><?php echo $adsOnline[$i]['title']; ?>
-                                </a>
-                            </h6>
-                            <p>
-                                <small style="font-size: xx-small;">
-                                    Vues: <?php echo $adsOnline[$i]['nb_views']; ?>.&nbsp;
-                                    <?php echo $adsOnline[$i]['city_name']; ?>
-                                </small>
-                            </p>
+            <?php for ($i=0; $i<$nbreAnnonces-($nbreAnnonces-12); $i++): ?>
+            <?php if( $adsOnline[$i]['title']<>'' ): ?>
+                    <div class="col-sm-12 col-md-3">
+                        <div class="thumbnail">
+                            <img src="uploads/<?php echo $adsOnline[$i]['feature_image']; ?>" alt="image"
+                                 style="width: 200px; height: 150px;">
+                            <div class="caption">
+                                <h6 style="min-height: 28px;">
+                                    <a href="details_ads.php?id=<?php echo $adsOnline[$i]['idadvert']; ?>"><?php echo $adsOnline[$i]['title']; ?>
+                                    </a>
+                                </h6>
+                                <p>
+                                    <small style="font-size: xx-small;">
+                                        Vues: <?php echo $adsOnline[$i]['nb_views']; ?>.&nbsp;
+                                        <?php echo $adsOnline[$i]['city_name']; ?>
+                                    </small>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
+            <?php endif; ?>
             <?php endfor; ?>
         </div>
     </div>

@@ -498,11 +498,12 @@ class Adverts extends Crud {
      * @return array|int|string
      */
     public function userList(){
-        return $this->getData("SELECT idadvert, title, nb_views, city_name, publish_date, price, "
+        $sqlQuery = "SELECT idadvert, title, nb_views, city_name, publish_date, price, "
             ."(SELECT short_currency FROM ".TBL_Settings." LIMIT 1) AS short_currency, "
-            ."(SELECT file_name FROM ".TBL_Images." img WHERE img.idadvert=ads.idadvert AND is_default=1) AS feature_image FROM "
-            .TBL_Adverts." ads WHERE pseudo='".$this->getPseudo()
-            ."' AND is_deleted=0");
+            ."(SELECT file_name FROM ".TBL_Images." img WHERE img.idadvert=ads.idadvert AND is_default=1)"
+            ." AS feature_image FROM ".TBL_Adverts." ads WHERE pseudo='".$this->getPseudo()
+            ."' AND status = '".$this->getStatus()."' AND is_deleted=0";
+        return $this->getData($sqlQuery);
 
     }
 
